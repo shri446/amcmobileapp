@@ -16,7 +16,6 @@ import 'package:network_info_plus/network_info_plus.dart';
 class ApiService extends GetxService {
   static ApiService get to => Get.find();
 
-
   final GetStorage storage=GetStorage();
 //  final String baseUrl = "http://192.168.0.199:8080";
   var networkStatus=false.obs;
