@@ -1,15 +1,15 @@
-import 'package:amcmobile/pages/navigation/service/amc_storage.dart';
-import 'package:amcmobile/pages/navigation/service/apiservice.dart';
-import 'package:amcmobile/pages/navigation/service/timer_service.dart';
+
+import 'package:amcmobile/service/authenticated_apiservice.dart';
+import 'package:amcmobile/service/timer_service.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class NetworkController extends GetxController{
   final String title = 'Network';
-  final ApiService apiService=Get.find<ApiService>();
+  final ApiService1 apiService=Get.find<ApiService1>();
 
-  ApiService apiservice = Get.find();
+  ApiService1 apiservice = Get.find();
   final TimerService timerService = Get.find<TimerService>();
   final RefreshController refreshController=RefreshController(initialRefresh:false);
 

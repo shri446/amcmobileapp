@@ -1,13 +1,6 @@
 import 'package:amcmobile/pages/navigation/dashboard/widget_dashboard.dart';
-import 'package:amcmobile/pages/navigation/trends/station.dart';
+
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
-import 'package:amcmobile/pages/root/nav_page1.dart';
-import 'package:amcmobile/pages/root/nav_page1.dart';
-import 'package:amcmobile/pages/root/nav_page1.dart';
-import 'package:amcmobile/pages/root/nav_page1.dart';
-import 'package:amcmobile/themes/app_colors.dart';
-import 'package:amcmobile/themes/app_theme.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';

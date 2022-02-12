@@ -1,6 +1,5 @@
 
 import 'package:amcmobile/pages/navigation/realtime/analog/analog_page.dart';
-import 'package:amcmobile/pages/navigation/realtime/analog/analog_page1.dart';
 import 'package:amcmobile/pages/navigation/realtime/digital/digital_page.dart';
 import 'package:amcmobile/pages/navigation/realtime/realtime_controller.dart';
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';

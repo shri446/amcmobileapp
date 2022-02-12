@@ -1,8 +1,5 @@
 
-import 'package:amcmobile/domain/time_value_object.dart';
-import 'package:amcmobile/pages/navigation/realtime/digital/digital_controller.dart';
 import 'package:amcmobile/pages/navigation/realtime/realtime_controller.dart';
-import 'package:amcmobile/pages/navigation/trends/Dummytab/Graph.dart';
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
 import 'package:amcmobile/themes/app_colors.dart';
 import 'package:amcmobile/themes/app_theme.dart';
@@ -10,8 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+
 
 class DigitalPage extends GetView<RealTimeController>{
   @override

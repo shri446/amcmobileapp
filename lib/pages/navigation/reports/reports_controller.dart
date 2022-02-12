@@ -1,13 +1,13 @@
 import 'dart:ffi';
 
-import 'package:amcmobile/pages/navigation/service/apiservice.dart';
-import 'package:dio/dio.dart';
+
+import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:get/get.dart';
 
 class ReportsController extends GetxController {
 
   final String title = 'Reports';
-  ApiService apiservice = Get.find();
+  ApiService1 apiservice = Get.find();
   late String selectedValue;
   var seletedItem = ''.obs;
   onSelectMenuItem(index) {

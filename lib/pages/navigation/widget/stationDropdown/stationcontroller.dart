@@ -1,9 +1,10 @@
-import 'package:amcmobile/pages/navigation/service/apiservice.dart';
+
+import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class StationDropdown extends GetxController {
-  ApiService apiservice = Get.find();
+  ApiService1 apiservice = Get.find();
 
    final RefreshController refreshController=RefreshController(initialRefresh: false,);
 

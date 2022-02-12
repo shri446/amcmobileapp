@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 import 'apiservice.dart';
+import 'authenticated_apiservice.dart';
 
 class ApiErrorHandler extends InterceptorsWrapper{
 
@@ -19,7 +20,7 @@ class ApiErrorHandler extends InterceptorsWrapper{
       var error=e.response!.data['error'];
       print(e.response!.data);
       if(error=='invalid_token' || error=='invalid_grant'){
-        Get.find<ApiService>().logout();
+        Get.find<ApiService1>().logout();
         showSnackBar("Error","Invalid Token");
       }else{
         showSnackBar("Error", error);

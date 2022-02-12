@@ -1,7 +1,9 @@
+/*
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:amcmobile/pages/navigation/menubar/change_theme/change_theme_page.dart';
+import 'package:amcmobile/pages/navigation/service/amc_storage.dart';
 import 'package:amcmobile/pages/navigation/service/oauth2_dio.dart';
 import 'package:amcmobile/utils/constants.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -27,9 +29,11 @@ class ApiService extends GetxService {
 
   getOauthToken() {
     Dio dio =Dio();
-   /* final requestHeader = {'Authorization': 'Basic '+base64.encode(utf8.encode('$clientId:$clientSecret'))};
+   */
+/* final requestHeader = {'Authorization': 'Basic '+base64.encode(utf8.encode('$clientId:$clientSecret'))};
     dio.post(baseUrl,)   .then((response) => {
-    print(response)*/
+    print(response)*//*
+
 
     String authorizationHeader=stringToBase64.encode('$clientId:$clientSecret');
      dio.post("http://192.168.100.17:8082/oauth/token",  data: {'grant_type':'password','username':'srikanth','password':'srikanth123'}, options: Options( headers: {'Content-Type':'application/X-WWW-form-urlencoded','Authorization':"Basic$authorizationHeader"})).then((response) => {
@@ -37,11 +41,15 @@ class ApiService extends GetxService {
      });
   }
   
-  ainitOAuthClient(){
+  initOAuthClient(String deviceInfo){
     oauthClient=OAuth(
         tokenUrl: "$baseUrl/oauth/token",
         clientId: clientId,
-        clientSecret: clientSecret);
+        clientSecret: clientSecret,
+        storage:OAuthSecureStorage(),
+
+
+    );
   }
 
 var dio = Dio();
@@ -84,9 +92,11 @@ var dio = Dio();
   Future servertime() {
     return dio.get(baseUrl + "/servertime");
   }
- /* Future  {
+ */
+/* Future  {
     return dio.get(baseUrl + "/events");
-  }*/
+  }*//*
+
   Future getAllEvents(String stationId , String type){
     return dio.get(baseUrl + "/events",queryParameters: {'stationId':stationId,'type': "Events"});
   }
@@ -146,14 +156,17 @@ late Map<String,dynamic> authenticatedMenuItems1={
     Get.toNamed("/loginpage");
   }
 
-  /*goToLoginPage() async {
+  */
+/*goToLoginPage() async {
     //Get.rootDelegate.popRoute();
     // storage.erase();
     Get.rootDelegate.offNamed("/Loginpage");
-  }*/
+  }*//*
+
 
 }
 
 
 
 
+*/

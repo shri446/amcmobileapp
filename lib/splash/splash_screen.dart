@@ -1,3 +1,4 @@
+/*
 import 'package:amcmobile/splash/splash_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -60,4 +61,4 @@ class SplashPage extends StatelessWidget{
 
   }
 
-}
+}*/

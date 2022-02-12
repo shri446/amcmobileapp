@@ -1,8 +1,7 @@
 
 import 'package:amcmobile/pages/navigation/realtime/realtime_controller.dart';
-import 'package:amcmobile/pages/navigation/service/amctheme_service.dart';
-import 'package:amcmobile/pages/navigation/trends/trends_controller.dart';
 import 'package:amcmobile/pages/navigation/widget/stationDropdown/stationcontroller.dart';
+import 'package:amcmobile/service/amctheme_service.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/src/bindings_interface.dart';
 

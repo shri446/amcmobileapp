@@ -1,7 +1,8 @@
 
 import 'package:amcmobile/domain/time_value_object.dart';
-import 'package:amcmobile/pages/navigation/service/apiservice.dart';
-import 'package:amcmobile/pages/navigation/service/timer_service.dart';
+import 'package:amcmobile/service/authenticated_apiservice.dart';
+import 'package:amcmobile/service/timer_service.dart';
+
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -12,7 +13,7 @@ class TrendsController extends GetxController {
 
 
 
-  ApiService apiservice = Get.find();
+  ApiService1 apiservice = Get.find();
   var selectedStation = {}.obs;
   var selectedPoint = {}.obs;
   var stations = [].obs; //

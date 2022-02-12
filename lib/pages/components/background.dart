@@ -20,7 +20,7 @@ class Background extends StatelessWidget {
             top: 0,
             right: 0,
             child: Image.asset(
-                "assets/top1.png",
+                "assets/images/top1.png",color: Color(0xFF0093f9),
                 width: size.width,
             ),
           ),
@@ -28,8 +28,8 @@ class Background extends StatelessWidget {
             top: 0,
             right: 0,
             child: Image.asset(
-                "assets/top2.png",
-                width: size.width,color: Color(0xFF2661FA),
+                "assets/images/top2.png",
+                width: size.width,color: Color(0xFF0093f9),
             ),
             ),
 
@@ -37,27 +37,27 @@ class Background extends StatelessWidget {
             top: 50,
             right: 10,
             child: Image.asset(
-                "assets/gridx1.png",
-                width: size.width * 0.35
+                "assets/images/gridx.png",
+                width: size.width * 0.40
             ),
           ),
           Positioned(
             bottom: 0,
             right: 0,
             child: Image.asset(
-                "assets/bottom1.png",
-                width: size.width,color: Color(0xFF2661FA),
+                "assets/images/bottom1.png",
+                width: size.width,color: Color(0xFF0093f9),
             ),
           ),
           Positioned(
             bottom: 0,
             right: 0,
             child: Image.asset(
-                "assets/bottom2.png",
-                width: size.width,color: Color(0xffFF4500),
+                "assets/images/bottom2.png",
+                width: size.width,color: Color(0xff0093f9),
             ),
           ),
-          child
+
         ],
       ),
     );

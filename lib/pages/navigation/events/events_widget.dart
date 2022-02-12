@@ -16,8 +16,7 @@ class EventsListView extends GetView<EventsController>{
              SmartRefresher(enablePullDown: true,
                  onRefresh: controller.getdata(),
                  controller: controller.refreshController,
-
-      child:    ListView.builder(
+               child:    ListView.builder(
             itemCount: controller.events.length,
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, i,) => CreateItem(i,controller,)

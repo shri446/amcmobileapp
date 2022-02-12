@@ -10,7 +10,7 @@ import 'app_colors.dart';
 class AppTheme {
   static TextStyle cardTitleStyle()=>TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 16,
+    fontSize: 18,
     color: AppColors.cardTitleColor(),
   );
 

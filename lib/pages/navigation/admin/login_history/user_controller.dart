@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amcmobile/pages/navigation/service/apiservice.dart';
+import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 
 class UsersController extends GetxController {
-  ApiService apiservice = Get.find();
+  ApiService1 apiservice = Get.find();
 
   var loginhistory = [].obs;
   var timestamp=0.obs;
