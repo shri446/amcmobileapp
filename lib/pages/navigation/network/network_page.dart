@@ -15,9 +15,11 @@ class Network extends GetView<NetworkController> {
   @override
   Widget build(BuildContext context){
     context.theme;
+    var _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Obx(()=>Scaffold(
+        key: _scaffoldKey,
+        endDrawer: AppDrawer(),
       appBar: networkAppbar(controller.title,controller.timestamp2.value,Get.find()),
-
         body:
         Builder(
         builder: (BuildContext context) {

@@ -17,7 +17,10 @@ class Events extends GetView<EventsController>{
   @override
   Widget build(BuildContext context) {
     context.theme;
+    var _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Obx(()=> Scaffold(
+        key: _scaffoldKey,
+        endDrawer: AppDrawer(),
       appBar: eventsAppbar(controller.title,controller.timestamp2.value,Get.find()),
         body:Builder(
             builder: (BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
 import 'package:amcmobile/themes/app_colors.dart';
+import 'package:amcmobile/themes/app_theme.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +8,14 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
-class Navpage2 extends GetView{
+class RootPage extends GetView{
   @override
   Widget build(BuildContext context) {
+    var _scaffoldKey = new GlobalKey<ScaffoldState>();
     context.theme;
     return Scaffold(
+        key: _scaffoldKey,
+        endDrawer: AppDrawer(),
         appBar: navAppbar(),
         body: Container(
         padding: EdgeInsets.all(10),
@@ -22,12 +25,12 @@ class Navpage2 extends GetView{
     children: [
     SizedBox(
     height: 180,
-    width: 380,
+    width: 370,
     child: Carousel(
     images: [
-    AssetImage("assets/power3.jpg",),
-    AssetImage("assets/wall1.jpg"),
-    AssetImage("assets/wall2.jpg",),
+    AssetImage("assets/images/power3.jpg",),
+    AssetImage("assets/images/wall1.jpg"),
+    AssetImage("assets/images/wall2.jpg",),
     ],
     dotSize: 4.0,
     dotSpacing: 15.0,
@@ -54,23 +57,21 @@ Widget createPages(){
         shrinkWrap: true,
         crossAxisSpacing: 8,
         mainAxisSpacing: 8,
-        padding: EdgeInsets.fromLTRB(3,3,3,3),
+        padding: EdgeInsets.fromLTRB(0,0,0,0),
         physics: NeverScrollableScrollPhysics(),
         staggeredTiles: [StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1)],
         children:<Widget> [
-          Navpages( "RealTime","realtime","assets/clock.svg",),
-          Navpages( "Trends","trends","assets/trends.svg",),
-          Navpages( "Network","network","assets/net.svg",),
-          Navpages( "Reports","reports","assets/exc.svg"),
-          Navpages( "Sldc","sldc","assets/net.svg"),
-          Navpages( "Events","events","assets/events.svg"),
-          Navpages( "Dashboard","dashboard","assets/dashboard.svg"),
-          Navpages( "Admin","admin","assets/admin.svg"),
-
+          Navpages( "RealTime","realtime","assets/images/clock.svg",),
+          Navpages( "Trends","trends","assets/images/trends.svg",),
+          Navpages( "Network","network","assets/images/network.svg",),
+          Navpages( "Reports","reports","assets/images/excel.svg"),
+          Navpages( "Sldc","sldc","assets/images/network.svg"),
+          Navpages( "Events","events","assets/images/events.svg"),
+          Navpages( "Dashboard","dashboard","assets/images/dashboard.svg"),
+          Navpages( "Admin","admin","assets/images/admin.svg"),
         ],
       )
   );
-
 }
 
 Widget Navpages(String textvalue,String page,String icon,){
@@ -83,10 +84,8 @@ Widget Navpages(String textvalue,String page,String icon,){
     child : Container(
         padding: EdgeInsets.fromLTRB(10,5,10,10),
           height: 100,
-          // margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
-          decoration: BoxDecoration(color: Colors.white ,
-            border: Border.all(color:AppColors.getBorderColor()),
-            borderRadius: BorderRadius.circular(10),),
+           margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+          decoration: AppTheme.boxDecorationStyle(),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -96,19 +95,12 @@ Widget Navpages(String textvalue,String page,String icon,){
                 mainAxisAlignment: MainAxisAlignment.end,
                 // crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-
-                  SvgPicture.asset(icon,width: 50,color: AppColors.getThemeColor(),),
-
+                  SvgPicture.asset(icon,width: 50.00,color: AppColors.getThemeColor(),),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      /*AnimatedFlipCounter(
-                          value:controller.gridDemand.value.toDouble(),
-                          textStyle: TextStyle(fontSize: 23, fontWeight: FontWeight.bold,letterSpacing: -2,color:AppColors.getDynamicTextColor())
-                      ),*/
-
-                    ],)
+                      ],)
                 ],
               )
             ],

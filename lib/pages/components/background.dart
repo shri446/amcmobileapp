@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
+
   const Background({
     Key? key,
     required this.child,
@@ -20,8 +21,8 @@ class Background extends StatelessWidget {
             top: 0,
             right: 0,
             child: Image.asset(
-                "assets/images/top1.png",color: Color(0xFF0093f9),
-                width: size.width,
+                "assets/images/top1.png",
+                width: size.width,color:Color(0xFF0093f9),
             ),
           ),
           Positioned(
@@ -29,13 +30,12 @@ class Background extends StatelessWidget {
             right: 0,
             child: Image.asset(
                 "assets/images/top2.png",
-                width: size.width,color: Color(0xFF0093f9),
+                width: size.width,color:Color(0xFF0093f9),
             ),
-            ),
-
+          ),
           Positioned(
-            top: 50,
-            right: 10,
+            top: 60,
+            right: 8,
             child: Image.asset(
                 "assets/images/gridx.png",
                 width: size.width * 0.40
@@ -46,7 +46,7 @@ class Background extends StatelessWidget {
             right: 0,
             child: Image.asset(
                 "assets/images/bottom1.png",
-                width: size.width,color: Color(0xFF0093f9),
+                width: size.width,color:Color(0xFF0093f9),
             ),
           ),
           Positioned(
@@ -54,10 +54,10 @@ class Background extends StatelessWidget {
             right: 0,
             child: Image.asset(
                 "assets/images/bottom2.png",
-                width: size.width,color: Color(0xff0093f9),
+                width: size.width,color:Color(0xFF0093f9),
             ),
           ),
-
+          child
         ],
       ),
     );

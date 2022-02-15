@@ -12,7 +12,10 @@ class Sldc extends GetView<SldcController>{
   DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    var _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: AppDrawer(),
       appBar: sldcAppbar(controller.title),
 
 

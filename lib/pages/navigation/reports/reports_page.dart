@@ -10,8 +10,10 @@ class Reports extends GetView<ReportsController>{
 
   @override
   Widget build(BuildContext context) {
+    var _scaffoldKey = new GlobalKey<ScaffoldState>();
       return Scaffold(
-
+        key: _scaffoldKey,
+        endDrawer: AppDrawer(),
         appBar: reportsAppbar(controller.title,),
         backgroundColor: AppColors.getThemeColor(),
         body: Container(

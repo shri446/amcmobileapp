@@ -1,136 +1,111 @@
-/*
+import 'package:amcmobile/pages/components/background.dart';
 import 'package:amcmobile/pages/login/login_controller.dart';
-import 'package:amcmobile/pages/navigation/realtime/realtime_controller.dart';
-import 'package:amcmobile/themes/app_theme.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:amcmobile/pages/root/root_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/photo.jpg"),fit:BoxFit.cover ),
-          ),
-
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(height: 400 ,
-                decoration:BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    //color: Colors.transparent,
-                    border: Border.all(color: Colors.white,width: 3)) ,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(8),
-                child:
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children:<Widget> [
-                    Image.asset('assets/gridx.png'),
-                    */
-/*TextField(
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        filled: true,
-                        hintText: "UserName",
-                        fillColor: Colors.white,
-                        labelStyle: TextStyle(fontSize: 20),
-                        border: OutlineInputBorder(),
-                      ),
-                    ),*//*
-
-                    TextFormField(
-                      // controller: controller.usernameController,
-                      style: AppTheme.dynamicTextStyle(),
-                      initialValue: controller.username.value,
-                      keyboardType: TextInputType.text,
-                      onChanged: (text)=>controller.onChangeUsername(text),
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(14.0)),
-                            borderSide: BorderSide(color: const Color(0xffea5d49), width: 2),
-                          ),
-                          labelText: 'Username',
-                          errorText: controller.usernameErrorText.value
-                      ),
-                      // validator: (value) => value!.trim().isEmpty ? 'Username required' : null,
-                    ),
-                  */
-/*  TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          filled: true,
-                          hintText: "password",
-                          fillColor: Colors.white,
-                          labelStyle: TextStyle(fontSize: 20),
-                          border: OutlineInputBorder(),
-                          suffixIcon: IconButton(
-                            icon:Icon(Icons.security),
-                            onPressed: (){
-                              },
-                          )
-                      ),
-                    ),*//*
-
-                    TextFormField(
-                      // controller: controller.passwordController,
-                      style: AppTheme.dynamicTextStyle(),
-                      initialValue: controller.password.value,
-                      keyboardType: TextInputType.text,
-                      obscureText: true,
-                      onChanged: (text)=>controller.onChangePassword(text),
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(14.0)),
-                            borderSide: BorderSide(color:const Color(0xffea5d49), width: 2),
-                          ),
-                          labelText: 'Password',
-
-                          errorText: controller.passwordErrorText.value
-                      ),
-                      // validator: (value) => value!.trim().isEmpty ? 'Password required' : null,
-
-                    ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          MaterialButton(
-
-                            child:
-                            TextButton("Login",Colors.yellow,"/navpage",),
-                            onPressed: (){
-                              // controller.getData();
-                            },),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Text("Logged out successfully",style: TextStyle(color: Colors.red,fontSize: 20),),
-                    ), Container(
-                      child: Text("Powerd by Joohitha Power Systems",style: TextStyle(color: Colors.white,fontSize: 20),),
-                    )
-                  ],
+        color:Colors.black12,
+        child: Background(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.symmetric(horizontal: 40),
+                child: Text(
+                  "LOGIN",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color:Color(0xFF0093f9),
+                      fontSize: 36
+                  ),
+                  textAlign: TextAlign.left,
                 ),
               ),
-            ),
-          ),),
-    );
-  }
-  Widget TextButton(String name, Color color,String page,) {
-    return MaterialButton(
-      onPressed: () {
-        Get.toNamed(page);
-      },
-      child: Text(name,style: TextStyle(fontSize:20,fontWeight: FontWeight.bold),),
-      color: color,
-        height: 50,
+              SizedBox(height: size.height * 0.03),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.symmetric(horizontal: 40),
+                child: TextField(
+                  decoration: InputDecoration(
+                      labelText: "Username",
+                    icon: Icon(Icons.person),
+                  ),
+                ),
+              ),
+              SizedBox(height: size.height * 0.03),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.symmetric(horizontal: 40),
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    icon: Icon(Icons.lock),
+                  ),
+                  obscureText: true,
+                ),
+              ),
+              SizedBox(height: size.height * 0.05),
+              Container(
+                alignment: Alignment.centerRight,
+                margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                child: Container(
+                    alignment: Alignment.center,
+                    height: 50.0,
+                    width: size.width * 0.3,
+                    decoration: new BoxDecoration(
+                        borderRadius: BorderRadius.circular(80.0),
+                        gradient: new LinearGradient(
+                            colors: [
+                              Color.fromARGB(255, 255, 136, 34),
+                              Color.fromARGB(255, 255, 177, 41)
+                            ]
+                        )
+                    ),
+                    child: Row(
+                        children: [
+                          MaterialButton(
+                            child: Text("Login",style: TextStyle(fontSize: 18,),),
+                            onPressed: (){
+                              int j=controller.users.length;
+                              for(int i=0;i<=j;i++){
+                                if(controller.userName.text== controller.users[i]["username"]&& controller.password.text==controller.users[i]["password"])
+                                {
+                                  Get.toNamed("/rootpage");
+                                  controller.userName.clear();
+                                  controller.password.clear();
+                                  break;
+                                }
+                                else{
+                                  Get.toNamed("/loginpage");
+                                }
+                              }
+                            },
+                          ),
+                        ],
+                      )
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
-*/
+/*
+Widget TextButton(String name,String page,) {
+  return MaterialButton(
+    onPressed: () {
+      Get.toNamed(page);
+    },
+    child: Text(name,style: TextStyle(fontSize:20,fontWeight: FontWeight.bold,color: Colors.white),),
+    height: 50,
+  );
+}*/

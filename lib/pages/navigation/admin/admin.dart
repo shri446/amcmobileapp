@@ -16,7 +16,10 @@ class Admin extends GetView<AdminController>{
   @override
   Widget build(BuildContext context){
     context.theme;
+    var _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: AppDrawer(),
       appBar: adminAppbar(controller.title,),
       body: Container(
         child: ContainedTabBarView(

@@ -16,7 +16,7 @@ class AppColors{
   static Color discomsColor=Color(0xffc3ba85);
   static Color cgsColor=Color(0xffff073a).withOpacity(0.125);*/
   static List<Color> themes=[Color(0xff7F8B52),Color(0xff548291),
-    Color(0xffC5C0D0),Color(0xffD88B22),Color(0xff7eb5a6),Color(0xffEEDD82),Color(0xff834C69),Color(0xff000000),Color(0xffC5B4E3),Color(0xffE9967A),Color(0xff7868E6),Color(0xff99ccff),];
+    Color(0xff5C5C5C),Color(0xffD88B22),Color(0xff7eb5a6),Color(0xffEEDD82),Color(0xff834C69),Color(0xff000000),Color(0xffC5B4E3),Color(0xffE9967A),Color(0xff7868E6),Color(0xff99ccff),];
 
   // static final backgroundColorLight = Color(0xfff4f9f9);
   static final backgroundColorDark = Color(0xff293330);

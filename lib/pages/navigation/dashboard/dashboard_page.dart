@@ -12,8 +12,12 @@ import 'dashboard_controller.dart';
 class DashboardPage extends GetView<DashboardController>{
   @override
   Widget build(BuildContext context) {
-  context.theme;
+    var _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+    context.theme;
   return  Scaffold(
+    key: _scaffoldKey,
+    endDrawer: AppDrawer(),
     appBar: dashboardAppbar(controller.title),
     body:
        SingleChildScrollView(

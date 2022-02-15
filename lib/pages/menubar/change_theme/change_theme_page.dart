@@ -1,4 +1,4 @@
-import 'package:amcmobile/pages/navigation/service/amctheme_service.dart';
+import 'package:amcmobile/service/amctheme_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -12,26 +12,26 @@ class ChangeThemePage extends GetView{
   Widget build(BuildContext context) {
     context.theme;
     return Container(
-        height: 215,
+        height: 270,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(0)),
           border: Border.all(color: AppColors.getDynamicTextColor()),
           color:Colors.white,//AppColors.backgroundColor()
         ),
         child: Column(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(padding: EdgeInsets.fromLTRB(20, 10, 10, 10),child: Text("App Theme's",style: Get.textTheme.headline6),),
+            Padding(padding: EdgeInsets.fromLTRB(20, 10, 10, 10),child: Text("Color code",style: Get.textTheme.headline6),),
             GridView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount:AppColors.themes.length,
-              padding: EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
-                  mainAxisSpacing: 15,
-                  crossAxisSpacing: 35,
-                  mainAxisExtent: 60,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 10,
+                  mainAxisExtent: 50,
               ),
               itemBuilder:(context,index){
                 return InkWell(
@@ -44,7 +44,6 @@ class ChangeThemePage extends GetView{
                       decoration: BoxDecoration(
                           border: Border.all(color: AppColors.themes[index],),
                         borderRadius: BorderRadius.circular(100),
-
                       ),
                       child: Container(
                         //width: 40,

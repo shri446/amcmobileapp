@@ -15,8 +15,11 @@ import 'package:get/get.dart';
 class Realtime extends GetView<RealTimeController > {
   @override
   Widget build(BuildContext context) {
+    var _scaffoldKey = new GlobalKey<ScaffoldState>();
     context.theme;
     return  Obx(()=>Scaffold(
+        key: _scaffoldKey,
+        endDrawer: AppDrawer(),
       appBar: createAppbar(controller.title,controller.timestamp2.value,Get.find(),),
         body:Builder(
             builder: (BuildContext context) {
