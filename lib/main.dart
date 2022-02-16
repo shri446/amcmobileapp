@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/loginpage",
       defaultTransition: Transition.leftToRight,
       getPages: [
+
        // GetPage(name: "/splash", page:()=> SplashPage(),binding: Splash_Binding()),
         GetPage(name: "/loginpage", page:()=> LoginPage(),binding: LoginPage_Binding()),
         GetPage(name: "/rootpage", page:()=> RootPage()),
