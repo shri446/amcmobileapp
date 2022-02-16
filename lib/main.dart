@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/rootpage",
+      initialRoute: "/loginpage",
       defaultTransition: Transition.leftToRight,
       getPages: [
        // GetPage(name: "/splash", page:()=> SplashPage(),binding: Splash_Binding()),

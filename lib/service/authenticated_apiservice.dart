@@ -6,6 +6,7 @@ import 'package:amcmobile/pages/menubar/change_theme/change_theme_page.dart';
 import 'package:amcmobile/pages/menubar/profile/profile_controller.dart';
 import 'package:amcmobile/pages/menubar/profile/profile_page.dart';
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
+import 'package:amcmobile/service/amc_api_error_handler.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class ApiService1 extends GetxService{
         clientSecret: clientSecret,
         storage: OAuthSecureStorage());
     dio.interceptors.add(BearerInterceptor(_oauthClient));
-   // dio.interceptors.add(ApiErrorHandler());
+    dio.interceptors.add(AmcApiErrorHandler());
   }
 
   Future<OAuthToken> authenticate(String username, String password)  {
