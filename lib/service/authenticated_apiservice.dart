@@ -6,7 +6,6 @@ import 'package:amcmobile/pages/menubar/change_theme/change_theme_page.dart';
 import 'package:amcmobile/pages/menubar/profile/profile_controller.dart';
 import 'package:amcmobile/pages/menubar/profile/profile_page.dart';
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
-import 'package:amcmobile/service/api_error_handler.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +59,7 @@ class ApiService1 extends GetxService{
         clientSecret: clientSecret,
         storage: OAuthSecureStorage());
     dio.interceptors.add(BearerInterceptor(_oauthClient));
-    dio.interceptors.add(ApiErrorHandler());
+   // dio.interceptors.add(ApiErrorHandler());
   }
 
   Future<OAuthToken> authenticate(String username, String password)  {
@@ -101,27 +100,27 @@ class ApiService1 extends GetxService{
     return dio.get(baseUrl + "/oauth/users");
   }
   Future getAlllogins() {
-    return dio.get(baseUrl + "/loginhistory");
+    return dio.get(baseUrl + "/oauth/loginhistory");
   }
   Future getAllStations() {
-    return dio.get(baseUrl + "/stations");
+    return dio.get(baseUrl + "/oauth/stations");
   }
   Future servertime() {
     return dio.get(baseUrl + "/servertime");
   }
 
   Future getAllEvents(String stationId , String type){
-    return dio.get(baseUrl + "/events",queryParameters: {'stationId':stationId,'type': "Events"});
+    return dio.get(baseUrl + "/oauth/events",queryParameters: {'stationId':stationId,'type': "Events"});
   }
 
   Future getPoints(String stationId , String type){
-    return dio.get(baseUrl + "/station",queryParameters: {'stationId':stationId,'type': type});
+    return dio.get(baseUrl + "/oauth/station",queryParameters: {'stationId':stationId,'type': type});
   }
   Future getSld(String stationId , String type){
-    return dio.get(baseUrl + "/drawings",queryParameters: {'stationId':stationId,'type': type});
+    return dio.get(baseUrl + "/oauth/drawings",queryParameters: {'stationId':stationId,'type': type});
   }
   Future getTrends(String stationId,String type) {
-    return dio.get(baseUrl + "/adDaily",
+    return dio.get(baseUrl + "/oauth/adDaily",
         queryParameters: {'stationId': stationId, 'type': "aDaily"});
   }
 
@@ -138,20 +137,23 @@ class ApiService1 extends GetxService{
 
   late Map<String,dynamic> authenticatedMenuItems={
     'App Theme':()=>_changeTheme(),
-    'Profile':()=>_showProfileInfo(),
+    //'Profile':()=>_showProfileInfo(),
     'Logout':()=>logout(),
   };
 
   _drawer(){
     Get.toNamed("/changetheme");
   }
+
   _changeTheme(){
     Get.bottomSheet(
       ChangeThemePage(),
       barrierColor: Colors.transparent,
       useRootNavigator: true,);
+
+
   }
-  _showProfileInfo(){
+ /* _showProfileInfo(){
     Get.defaultDialog(
       title: "Profile",
       barrierDismissible: true,
@@ -164,7 +166,7 @@ class ApiService1 extends GetxService{
         ],
       ),
     );
-  }
+  }*/
 
   logout()  {
     log("logging out..... ");
@@ -192,7 +194,7 @@ changePassword() {
     textCancel: "Cancel",
     barrierDismissible: false,
     content: ChangePasswordPage(),
-    radius: 10,
+    radius: 20,
     onCancel: () => Get.delete<ChangePasswordController>(force: true),
     onWillPop: () => Get.delete<ChangePasswordController>(force: true),
     onConfirm: () => Get.find<ChangePasswordController>().changePassword(),
