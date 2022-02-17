@@ -65,7 +65,7 @@ Widget createPages(){
           Navpages( "Trends","trends","assets/images/trends.svg",),
           Navpages( "Network","network","assets/images/network.svg",),
           Navpages( "Reports","reports","assets/images/excel.svg"),
-          Navpages( "Sldc","sldc","assets/images/network.svg"),
+          Navpages( "Sld","sld","assets/images/network.svg"),
           Navpages( "Events","events","assets/images/events.svg"),
           Navpages( "Dashboard","dashboard","assets/images/dashboard.svg"),
           Navpages( "Admin","admin","assets/images/admin.svg"),

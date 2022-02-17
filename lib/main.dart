@@ -8,6 +8,8 @@ import 'package:amcmobile/pages/login/loginpage_binding.dart';
 import 'package:amcmobile/pages/navigation/admin/admin_binding.dart';
 import 'package:amcmobile/pages/navigation/dashboard/dashboard_binding.dart';
 import 'package:amcmobile/pages/navigation/dashboard/dashboard_page.dart';
+import 'package:amcmobile/pages/navigation/sld/sld_binding.dart';
+import 'package:amcmobile/pages/navigation/sld/sld_page.dart';
 import 'package:amcmobile/pages/navigation/trends/trends.dart';
 import 'package:amcmobile/pages/root/root_page.dart';
 import 'package:amcmobile/pages/navigation/admin/admin.dart';
@@ -19,8 +21,6 @@ import 'package:amcmobile/pages/navigation/realtime/realtime_binding.dart';
 import 'package:amcmobile/pages/navigation/realtime/realtime_page.dart';
 import 'package:amcmobile/pages/navigation/reports/reports_binding.dart';
 import 'package:amcmobile/pages/navigation/reports/reports_page.dart';
-import 'package:amcmobile/pages/navigation/sldc/sldc_binding.dart';
-import 'package:amcmobile/pages/navigation/sldc/sldc_page.dart';
 import 'package:amcmobile/pages/navigation/trends/trends_binding.dart';
 import 'package:amcmobile/service/amctheme_service.dart';
 import 'package:amcmobile/service/authenticated_apiservice.dart';
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/loginpage",
+      initialRoute: "/rootpage",
       defaultTransition: Transition.leftToRight,
       getPages: [
 
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/realtime", page:()=> Realtime(),binding: RealTimeBinding()),
         GetPage(name: "/network", page:()=> Network(),binding: NetworkBinding()),
         GetPage(name: "/reports", page:()=> Reports(),binding: ReportsBinding()),
-        GetPage(name: "/sldc", page:()=> Sldc(),binding: SldcBinding()),
+        GetPage(name: "/sld", page:()=> Sld(),binding: SldBinding()),
         GetPage(name: "/trends", page:()=> Trends2(),binding: TrendsBinding(),),
         GetPage(name: "/events", page:()=> Events(),binding: EventsBinding()),
         GetPage(name: "/dashboard", page:()=> DashboardPage(),binding:DashboardBinding()),

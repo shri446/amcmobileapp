@@ -134,7 +134,6 @@ class GridDemandChartPage extends GetView<DashboardController>{
 
     padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
     child: Text("Hourly Generation", style: AppTheme.cardTitleStyle(),),
-
     ),
       Container(
         height: 180,
@@ -167,8 +166,7 @@ class GridDemandChartPage extends GetView<DashboardController>{
                           // palette: AppColors.circular_colors,
                           series: <ChartSeries<TimeValueObject, String>>[
                             ColumnSeries<TimeValueObject, String>(
-
-                                dataSource: controller.statistics.value,
+                              dataSource: controller.statistics.value,
                                 xValueMapper: (timevalueObject,index)=>DateFormat('MMM,dd').format(timevalueObject.timestamp),
                                 yValueMapper: (timevalueObject,index)=> timevalueObject.value,
                                 pointColorMapper: (data,index)=>AppColors.circular_colors[index],
@@ -222,7 +220,7 @@ Widget createGridDemandContainer(DashboardController controller){
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 // crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  SvgPicture.asset('assets/generation.svg',color: AppColors.getThemeColor(),width: 45.00),
+                  SvgPicture.asset('assets/images/generation.svg',color: AppColors.getThemeColor(),width: 45.00),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -257,10 +255,11 @@ Widget createTotalUnitsContainer(DashboardController controller){
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 // crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  SvgPicture.asset('assets/totalunits.svg',color: AppColors.getThemeColor(),width: 45.00),
+                  SvgPicture.asset('assets/images/totalunits.svg',color: AppColors.getThemeColor(),width: 45.00),
                   // Icon(Icons.lightbulb_outline,size: 80, ),
                   /*CircleAvatar(
                     backgroundColor:Colors.black12,
+
                     child: Icon(Icons.bar_chart,color: Colors.brown,),
                     radius: 30,
                   ),*/
@@ -299,7 +298,7 @@ Widget createTodayEnergyContainer(DashboardController controller){
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 // crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  SvgPicture.asset('assets/todayenergy.svg',color: AppColors.getThemeColor(),width: 45.00,),
+                  SvgPicture.asset('assets/images/todayenergy.svg',color: AppColors.getThemeColor(),width: 45.00,),
                   // Icon(Icons.location_city_outlined,size: 75, ),
                   /*CircleAvatar(
                     backgroundColor:Colors.black12,

@@ -20,6 +20,7 @@ import 'oauth2_dio.dart';
 
 class ApiService1 extends GetxService{
   static ApiService1 get to => Get.find();
+  //test
 
   // final isLoggedIn = false.obs;
   // bool get isLoggedInValue => isLoggedIn.value;

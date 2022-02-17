@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class SldcController extends GetxController {
-  final String title = 'SLDC';
+class SldController extends GetxController {
+  final String title = 'SLD';
   var timesatmp=0.obs;
   var timestamp2=''.obs;
 

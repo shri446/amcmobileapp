@@ -285,7 +285,6 @@ AppBar createAppbar(String title,String timestamp2,ApiService1 apiService,){
   );
 }
 AppBar trendsAppbar(String title,){
-
   return AppBar(
     leadingWidth: 50,
     leading: IconButton(
@@ -306,43 +305,6 @@ AppBar trendsAppbar(String title,){
           ),
         ]
     ),
-/*
-    actions: [
-      IconButton(
-        icon: const Icon(Icons.more_vert),
-        onPressed: () => AppDrawer(),
-      ),
-    ],*/
-/*    actions: [
-      Builder(builder:(context){
-        return IconButton(
-          onPressed: (){
-            Scaffold.of(context).openDrawer(
-
-            );
-            },
-          icon: const Icon(Icons.more_vert,color: Colors.pinkAccent,),
-        );
-      })
-     *//* Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-          //  Text(timestamp2.substring(11,19)+""+"\n"+timestamp2.substring(0,10)),
-          ]
-      ),
-      PopupMenuButton<MapEntry>(
-          icon: Icon(Icons.more_vert,color: Colors.white,),
-          tooltip: 'Actions',
-          elevation: 20,
-          onSelected:(entry)=>entry.value.call(),
-          itemBuilder: (context) => ApiService1.to.authenticatedMenuItems.entries.map((entry) =>
-              PopupMenuItem(
-                value: entry,
-                child: Text(entry.key.toString()),
-              )).toList()
-      ),*//*
-    ],*/
   );
 }
 
@@ -364,22 +326,8 @@ AppBar reportsAppbar(String title,){
             padding: const EdgeInsets.fromLTRB(0,30,0,0),
             child: Text(title,style: TextStyle(fontSize: 15)),
           ),
-
-        ]),
-
- /*   actions: [
-      PopupMenuButton<MapEntry>(
-          icon: Icon(Icons.more_vert,color: Colors.white,),
-          tooltip: 'Actions',
-          elevation: 20,
-          onSelected:(entry)=>entry.value.call(),
-          itemBuilder: (context) => ApiService1.to.authenticatedMenuItems.entries.map((entry) =>
-              PopupMenuItem(
-                value: entry,
-                child: Text(entry.key.toString()),
-              )).toList()
-      ),
-    ],*/
+        ]
+    ),
   );
 }
 
@@ -403,19 +351,6 @@ AppBar sldcAppbar(String title,){
           ),
         ]
     ),
- /*   actions: [
-      PopupMenuButton<MapEntry>(
-          icon: Icon(Icons.more_vert,color: Colors.black,),
-          tooltip: 'Actions',
-          elevation: 20,
-          onSelected:(entry)=>entry.value.call(),
-          itemBuilder: (context) => ApiService1.to.authenticatedMenuItems.entries.map((entry) =>
-              PopupMenuItem(
-                value: entry,
-                child: Text(entry.key.toString()),
-              )).toList()
-      ),
-    ],*/
   );
 }
 
@@ -523,85 +458,6 @@ class _AppDrawerState extends State<AppDrawer> {
            ),
          ],
        ),
-
-
-
-
-
-/*
-        child: new ListView(
-          children: <Widget>[
-            Column(
-              children: [
-                TextButton( child: Text("Profile",style: TextStyle(color:AppColors.backgroundColorDark)),
-                onPressed: (){
-               showProfileInfo();
-               },),
-              ],
-            ),
-            Column(
-              children: [
-                TextButton(child: Text("Change pw",style: TextStyle(color:AppColors.backgroundColorDark), ),
-                    onPressed:(){
-                    changePassword();
-                  }),
-              ],
-            ),
-            Column(
-              children: [
-                ListTile(
-                    title: Text('Sign out'),
-                    leading: Icon(Icons.logout),
-                    onTap: (){
-                    Navigator.pop(context);
-                    showDialog(
-                      context: context,
-                     builder: (BuildContext context)
-                    {
-                      context = context;
-                     return CupertinoAlertDialog(
-                        title: Text("Logout"),
-                        content: Text("Are you sure, do you want to exit?"),
-                        actions: [
-                          CupertinoDialogAction(
-                            isDefaultAction: true,
-                            child: Text("Yes"),
-                          ),
-                          CupertinoDialogAction(
-                            textStyle: TextStyle(color: Colors.red),
-                            child: Text("No"),
-                            onPressed:()=>{} ,
-                          ),
-
-                          ElevatedButton(
-                            child: Text('No'),
-                            onPressed: () => {Navigator.of(context).pop(true);},
-                          ),
-                          ElevatedButton(
-                              child: Text('Yes'),
-                              onPressed: () => {Navigator.of(context).pop(false);}
-                          ),
-                        ],
-                      );
-                    }
-                    );
-                  }
-                  )
-                  ]
-            ),
-            Column(
-              children: [
-                ExpansionTile(
-                  controlAffinity: ListTileControlAffinity.leading,
-                  title: Text("App Theam",style: TextStyle(fontSize: 15),),
-                  children: [
-                    ChangeThemePage()
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),*/
       ),
     );
   }
