@@ -18,8 +18,9 @@ class Network extends GetView<NetworkController> {
     var _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Obx(()=>Scaffold(
         key: _scaffoldKey,
-        endDrawer: AppDrawer(),
+
       appBar: networkAppbar(controller.title,controller.timestamp2.value,Get.find()),
+        endDrawer: AppDrawer(),
         body:
         Builder(
         builder: (BuildContext context) {

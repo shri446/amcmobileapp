@@ -17,7 +17,8 @@ class RootPage extends GetView{
         key: _scaffoldKey,
         endDrawer: AppDrawer(),
         appBar: navAppbar(),
-        body: Container(
+        body: SingleChildScrollView(
+        child:Container(
         padding: EdgeInsets.all(10),
         // height: MediaQuery.of(context).size.height,
         //width: double.infinity,
@@ -45,32 +46,34 @@ class RootPage extends GetView{
         ]
       )
         )
-    );
+        ));
   }
 }
 
 
 Widget createPages(){
-  return Container(
-      child:StaggeredGridView.count(
-        crossAxisCount: 2,
-        shrinkWrap: true,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
-        padding: EdgeInsets.fromLTRB(0,0,0,0),
-        physics: NeverScrollableScrollPhysics(),
-        staggeredTiles: [StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1)],
-        children:<Widget> [
-          Navpages( "RealTime","realtime","assets/images/clock.svg",),
-          Navpages( "Trends","trends","assets/images/trends.svg",),
-          Navpages( "Network","network","assets/images/network.svg",),
-          Navpages( "Reports","reports","assets/images/excel.svg"),
-          Navpages( "Sld","sld","assets/images/network.svg"),
-          Navpages( "Events","events","assets/images/events.svg"),
-          Navpages( "Dashboard","dashboard","assets/images/dashboard.svg"),
-          Navpages( "Admin","admin","assets/images/admin.svg"),
-        ],
-      )
+  return SingleChildScrollView(
+    child: Container(
+        child:StaggeredGridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 8,
+          padding: EdgeInsets.fromLTRB(0,0,0,0),
+          physics: NeverScrollableScrollPhysics(),
+          staggeredTiles: [StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1)],
+          children:<Widget> [
+            Navpages( "RealTime","realtime","assets/images/clock.svg",),
+            Navpages( "Trends","trends","assets/images/trends.svg",),
+            Navpages( "Network","network","assets/images/network.svg",),
+            Navpages( "Reports","reports","assets/images/excel.svg"),
+            Navpages( "Sld","sld","assets/images/network.svg"),
+            Navpages( "Events","events","assets/images/events.svg"),
+            Navpages( "Dashboard","dashboard","assets/images/dashboard.svg"),
+            Navpages( "Admin","admin","assets/images/admin.svg"),
+          ],
+        )
+    ),
   );
 }
 
@@ -84,7 +87,7 @@ Widget Navpages(String textvalue,String page,String icon,){
     child : Container(
         padding: EdgeInsets.fromLTRB(10,5,10,10),
           height: 100,
-           margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+           margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
           decoration: AppTheme.boxDecorationStyle(),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -25,6 +25,10 @@ class AdminController extends GetxController{
     super.onReady();
   }
 
+  List getTabs(){
+    return ['Users','OverView','Apps',];
+  }
+
 
 
 }

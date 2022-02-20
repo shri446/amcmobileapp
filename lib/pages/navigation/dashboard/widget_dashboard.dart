@@ -142,7 +142,7 @@ class GridDemandChartPage extends GetView<DashboardController>{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                      padding: EdgeInsets.fromLTRB(10,6,10,6),
+                      padding: EdgeInsets.fromLTRB(10,2,10,6),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -189,9 +189,9 @@ Widget createSecondRow(DashboardController controller){
       child:StaggeredGridView.count(
         crossAxisCount: 2,
         shrinkWrap: true,
-        crossAxisSpacing: 5,
-        mainAxisSpacing: 5,
-        padding: EdgeInsets.fromLTRB(3,3,3,3),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        padding: EdgeInsets.fromLTRB(0,0,0,0),
         physics: NeverScrollableScrollPhysics(),
         staggeredTiles: [StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1)],
         children: [
@@ -365,7 +365,7 @@ Widget createThirdRow(DashboardController controller){
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+            padding: const EdgeInsets.fromLTRB(10, 10, 10 ,10),
                 child: Text("Genaration Statistics", style: AppTheme.cardTitleStyle(),),
           ),
         Container(

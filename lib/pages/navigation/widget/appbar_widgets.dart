@@ -1,16 +1,22 @@
-import 'package:amcmobile/pages/menubar/change_password/change_password_page.dart';
 import 'package:amcmobile/pages/menubar/change_theme/change_theme_page.dart';
-import 'package:amcmobile/pages/navigation/network/network_controller.dart';
-import 'package:amcmobile/pages/navigation/realtime/realtime_controller.dart';
+import 'package:amcmobile/pages/navigation/admin/apps/apps_controller.dart';
 import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:amcmobile/themes/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:intl/intl.dart';
+
+showApplicationControlDialog(Map map,String status){
+  AppsController controller=Get.find<AppsController>();
+  Get.defaultDialog(
+      barrierDismissible: false,
+      title: 'Alert!',
+      content: Text('Are you sure want to '+status),
+      textCancel: 'Cancel',
+      textConfirm: status,
+      onConfirm: ()=>controller.takeAction(map, status.toUpperCase())
+  );
+}
 
 void showSnackBar(String title,String message){
   Get.snackbar(
@@ -43,19 +49,7 @@ Widget loading() {
   );
 
 }
-/*Widget loading() {
-  return Center(
-      child: Obx(()=>Get.find<ApiService>().networkStatus.value ?  Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircularProgressIndicator(color: Colors.blue,),
-          SizedBox(height: 10,),
-          Text("Loading, please wait..."),
-        ],
-      ) : Center(child:Text("Check Internet connection"))
-      )
-  );
-}*/
+
 
 AppBar dashboardAppbar(String title){
   return AppBar(
@@ -63,7 +57,6 @@ AppBar dashboardAppbar(String title){
       icon: Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () =>Get.back(),
     ),
-    leadingWidth: 40,
     // backgroundColor: Colors.transparent,
     centerTitle: false,
     titleSpacing: 0,
@@ -77,27 +70,12 @@ AppBar dashboardAppbar(String title){
           ),
         ]
     ),
-   /* actions: [
-      PopupMenuButton<MapEntry>(
-          icon: Icon(Icons.home,color: Colors.white,size: 35,),
-          tooltip: 'Actions',
-          elevation: 20,
-          onSelected:(entry)=>entry.value.call(),
-          itemBuilder: (context) => ApiService1.to.authenticatedMenuItems1.entries.map((entry) =>
-              PopupMenuItem(
-                value: entry,
-                child: Text(entry.key.toString()),
-              )).toList()
-      ),
-    ],*/
   );
 }
 
 AppBar navAppbar(){
   return AppBar(
-
-    leadingWidth: 60,
-   // backgroundColor: Colors.transparent,
+    // backgroundColor: Colors.transparent,
     //centerTitle: false,
     titleSpacing: 0,
     title: Row(
@@ -132,7 +110,7 @@ AppBar eventsAppbar(String title, String timestamp2,ApiService1 apiService){
       icon: Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () =>Get.back(),
     ),
-    leadingWidth: 40,
+
     //backgroundColor: Colors.transparent,
     centerTitle: false,
     titleSpacing: 0,
@@ -143,38 +121,24 @@ AppBar eventsAppbar(String title, String timestamp2,ApiService1 apiService){
           Padding(
             padding: const EdgeInsets.fromLTRB(0,30,0,0),
             child: Text(title,style: TextStyle(fontSize: 15)),
+
           ),
+          SizedBox(width: 40,),
+          Column(
+            children: [
+              Padding(padding: const EdgeInsets.fromLTRB(0,5,0,0)),
+              Text(timestamp2.substring(11,19)+""+"\n"+timestamp2.substring(0,10),style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),)
+            ],
+          )
         ]
     ),
-    actions: [
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-         Text(timestamp2.substring(11,19)+""+"\n"+timestamp2.substring(0,10)),
-         // Text(timestamp);
-         //Text(timestamp2.substring(11,19)+""+"\n"+timestamp2.substring(0,10)),
-        ],
-      ),
-   /*   PopupMenuButton<MapEntry>(
-          icon: Icon(Icons.more_vert,color: Colors.white,),
-          tooltip: 'Actions',
-          elevation: 20,
-          onSelected:(entry)=>entry.value.call(),
-          itemBuilder: (context) => ApiService1.to.authenticatedMenuItems.entries.map((entry) =>
-              PopupMenuItem(
-                value: entry,
-                child: Text(entry.key.toString()),
-              )).toList()
-      ),*/
-    ],
+
   );
 }
 
 AppBar networkAppbar(String title, String timestamp2,ApiService1 apiService){
   var timestamp;
   return AppBar(
-    leadingWidth: 40,
     leading: IconButton(
       icon: Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () =>Get.back(),
@@ -195,46 +159,19 @@ AppBar networkAppbar(String title, String timestamp2,ApiService1 apiService){
             padding: const EdgeInsets.fromLTRB(0,30,0,0),
             child: Text(title,style: TextStyle(fontSize: 15)),
           ),
+          SizedBox(width: 40,),
+          Column(
+            children: [
+              Padding(padding: const EdgeInsets.fromLTRB(0,5,0,0)),
+              Text(timestamp2.substring(11,19)+""+"\n"+timestamp2.substring(0,10),style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),)
+            ],
+          )
         ]
     ),
-    actions: [
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-    /*      Text(
-            DateFormat.Hms().format(DateTime.now()),
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          Text(  DateFormat('EEEE dd/MM').format(DateTime.now()),
-  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-  ),*/
-         // Text(timestamp2.substring(11,16))
-          Text(timestamp2.substring(11,19)+""+"\n"+timestamp2.substring(0,10),)
-        //  Text(timestamp2>0?DateFormat('HH:mm:ss').format(DateTime.fromMillisecondsSinceEpoch(controller.timestamp.value)) :'' , style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold,color: Colors.orange),),
-
-          //Text(timestamp> 0 ? DateFormat('HH:mm:ss').format(DateTime.fromMillisecondsSinceEpoch(timestamp)) : '' , style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold,color: Colors.orange),),
-         // Text(timestamp> 0 ? DateFormat('EEEE dd/MM').format(DateTime.fromMillisecondsSinceEpoch(timestamp)) : '', style: TextStyle(fontSize: 11.0,fontWeight: FontWeight.bold),)
-        ],
-      ),
-  /*    PopupMenuButton<MapEntry>(
-          icon: Icon(Icons.more_vert,color: Colors.white,),
-          tooltip: 'Actions',
-          elevation: 20,
-          onSelected:(entry)=>entry.value.call(),
-          itemBuilder: (context) => ApiService1.to.authenticatedMenuItems.entries.map((entry) =>
-              PopupMenuItem(
-                value: entry,
-                child: Text(entry.key.toString()),
-              )).toList()
-      ),*/
-    ],
   );
 }
 
 AppBar createAppbar(String title,String timestamp2,ApiService1 apiService,){
-
-
   return AppBar(
     leading: IconButton(
       icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -255,38 +192,11 @@ AppBar createAppbar(String title,String timestamp2,ApiService1 apiService,){
         ]
     ),
 
-    /*actions: [
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
 
-
-         // Text(timestamp2.substring(11,19)+""+"\n"+timestamp2.substring(0,10)),
-
-          *//*   Text(timestamp> 0 ? DateFormat('HH:mm:ss').format(DateTime.fromMillisecondsSinceEpoch(timestamp)) : '' , style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold),),
-          Text(timestamp> 0 ? DateFormat('EEEE dd/MM').format(DateTime.fromMillisecondsSinceEpoch(timestamp)) : '', style: TextStyle(fontSize: 11.0,fontWeight: FontWeight.bold),)
-*//*
-   ]),
-      *//* IconButton(icon: Icon(Icons.notifications),
-        onPressed: ()=> Get.isDarkMode? Get.changeTheme(ThemeData.light()):Get.changeTheme(ThemeData.dark()),),*//*
-     *//* PopupMenuButton<MapEntry>(
-          icon: Icon(Icons.more_vert,color: Colors.white,),
-          tooltip: 'Actions',
-          elevation: 20,
-          onSelected:(entry)=>entry.value.call(),
-          itemBuilder: (context) => apiService.authenticatedMenuItems.entries.map((entry) =>
-              PopupMenuItem<MapEntry>(
-                value: entry,
-                child: Text(entry.key.toString()),
-              )).toList()
-      ),*//*
-    ],*/
   );
 }
 AppBar trendsAppbar(String title,){
   return AppBar(
-    leadingWidth: 50,
     leading: IconButton(
       icon: Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () =>Get.back(),
@@ -384,7 +294,6 @@ class AppDrawer extends StatefulWidget {
   @override
   _AppDrawerState createState() => new _AppDrawerState();
 }
-
 class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {

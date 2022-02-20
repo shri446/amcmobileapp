@@ -1,4 +1,5 @@
 import 'package:amcmobile/pages/navigation/admin/admin_controller.dart';
+import 'package:amcmobile/pages/navigation/admin/apps/apps_page.dart';
 import 'package:amcmobile/pages/navigation/admin/login_history/user.dart';
 import 'package:amcmobile/pages/navigation/admin/manage_users/manage_users.dart';
 import 'package:amcmobile/pages/navigation/admin/overview/overview_page.dart';
@@ -29,23 +30,20 @@ class Admin extends GetView<AdminController>{
             ),
             labelColor: AppColors.getDynamicTextColor(),
           ),
+            tabs: controller.getTabs().map((tab) {
+              return Text(tab,);
+            }).toList(),
 
-          tabs: [
-            Text('LoginHistory',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
-            Text('ApplLogs',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
-            Text('OverView',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
-          //  Text('Users',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
-
-          ],
 
           views: [
             Users(),
-            Logs(),
+
             OverviewPage(),
+            AppsPage(),
           //  ManageUsers(),
           ],
           initialIndex: 0,
-         // onChange: (index)=>controller.onTabSelect(index),
+          onChange: (index)=>controller.onTabSelect(index),
         ),
       ),
       /*  body:    Container(

@@ -9,8 +9,7 @@ import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
 import 'package:amcmobile/service/amc_api_error_handler.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -21,13 +20,11 @@ import 'oauth2_dio.dart';
 class ApiService1 extends GetxService{
   static ApiService1 get to => Get.find();
   //test
-
   // final isLoggedIn = false.obs;
   // bool get isLoggedInValue => isLoggedIn.value;
 
   final GetStorage storage=GetStorage();
   final String baseUrl="http://192.168.98.134:8080";
-
 
   // bool authenticatedUser;
   late Dio dio;
@@ -222,38 +219,3 @@ showAlertDialog(){
 }
 
 
-
-late OAuth oauthClient;
-Future postRequest1(String path, Map<String, String> params, StateMixin statemixin) {
-  return oauthClient.dio!.post(
-      path, queryParameters: params.isNotEmpty ? params : {},
-      options: Options(headers: {"Authorization": "Bearer " + getToken()},))
-      .whenComplete(() =>
-      statemixin.change("Success", status: RxStatus.success()))
-      .onError((error, stackTrace) {
-    String message = 'Error occured, retry again';
-    if (error is DioError) {
-      var dioError = error as DioError;
-      if (dioError.error is SocketException) {
-        message = "Check Internet connection";
-      } else if (dioError.type == DioErrorType.connectTimeout) {
-        message = 'Connection timed out, retry';
-      }else if (dioError.type == DioErrorType.response) {
-        int? status = dioError.response?.statusCode;
-        print(dioError.response);
-        if (status == 401) { //invalid access token
-         // refreshAccessToken();
-        }
-      }
-    }
-    statemixin.change("Failed", status: RxStatus.error(message));
-    return Future.error(error!, stackTrace);
-  });
-  /*.catchError((error,stackTrace){
-            statemixin.change("Failed",status: RxStatus.error("Error occured, retry again"));
-            return Future.value(error!);
-        });*/
-}
-getToken() {
-  return storage.read("accessToken") ?? "";
-}

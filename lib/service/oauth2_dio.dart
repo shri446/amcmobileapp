@@ -7,6 +7,16 @@ import 'package:dio/dio.dart';
 typedef OAuthToken OAuthTokenExtractor(Response response);
 typedef Future<bool> OAuthTokenValidator(OAuthToken token);
 
+class OAuthException extends Error {
+  final String code;
+  final String message;
+
+  OAuthException(this.code, this.message) : super();
+
+  @override
+  String toString() => 'OAuthException: [$code] $message';
+}
+
 /// Interceptor to send the bearer access token and update the access token when needed
 class BearerInterceptor extends Interceptor {
   OAuth oauth;
@@ -16,20 +26,25 @@ class BearerInterceptor extends Interceptor {
   /// Add Bearer token to Authorization Header
   @override
   Future onRequest(RequestOptions options, RequestInterceptorHandler handle) async {
-    oauth.fetchOrRefreshAccessToken().then((token) {
+    /*oauth.fetchOrRefreshAccessToken().then((token) {
       if (token != null) {
         options.headers.addAll({"Authorization": "Bearer ${token.accessToken}"});
       }
       return handle.next(options);
     }).catchError((error, stackTrace) {
       handle.reject(error, true);
+    });*/
+
+
+    final token = await oauth.fetchOrRefreshAccessToken().catchError((err) {
+      print(err);
+      return null;
     });
 
-    /*final token = await oauth.fetchOrRefreshAccessToken();
     if (token != null) {
       options.headers.addAll({"Authorization": "Bearer ${token.accessToken}"});
     }
-    return handle.next(options);*/
+    return handle.next(options);
   }
 }
 
@@ -114,20 +129,25 @@ class OAuthToken {
   final String? accessToken;
   final String? refreshToken;
   final DateTime? expiration;
+  final String? scope;
+  final Map<String,dynamic>? profileInfo;
 
-  OAuthToken({this.accessToken,this.refreshToken,this.expiration});
+  OAuthToken({this.accessToken,this.refreshToken,this.expiration,this.scope,this.profileInfo});
   bool get isExpired => DateTime.now().isAfter(expiration!);
 
   OAuthToken.fromMap(Map<String, dynamic> map)
       : accessToken = map['access_token'],
         refreshToken = map['refresh_token'],
-        expiration = DateTime.now()
-            .add(Duration(seconds: map['expires_in'] ?? map['expires']));
+        expiration = DateTime.now().add(Duration(seconds: map['expires_in'] ?? map['expires'])),
+        scope = map['scope'],
+        profileInfo = map['profileInfo'];
 
   Map<String, dynamic> toMap() => {
     'access_token': accessToken,
     'refresh_token': refreshToken,
     'expires_in': expiration!.millisecondsSinceEpoch,
+    'scope': scope,
+    'profileInfo': profileInfo
   };
 }
 
@@ -188,12 +208,11 @@ class OAuth {
   /// return current access token or refresh
   Future<OAuthToken?> fetchOrRefreshAccessToken() async {
     OAuthToken? token = await storage!.fetch();
-
-    if (token == null) {
-      return null;
+    if (token?.accessToken == null) {
+      throw OAuthException('missing_access_token', 'Missing access token!');
     }
 
-    if (await this.validator!(token)) return token;
+    if (await this.validator!(token!)) return token;
 
     return this.refreshAccessToken();
   }
@@ -201,7 +220,10 @@ class OAuth {
   /// Refresh Access Token
   Future<OAuthToken> refreshAccessToken() async {
     OAuthToken? token = await storage?.fetch();
-    String refreshToken = token?.refreshToken ?? '';
-    return this.requestTokenAndSave(RefreshTokenGrant(refreshToken: refreshToken));
+
+    if (token?.refreshToken == null) {
+      throw OAuthException('missing_refresh_token', 'Missing refresh token!');
+    }
+    return this.requestTokenAndSave(RefreshTokenGrant(refreshToken: token!.refreshToken!));
   }
 }

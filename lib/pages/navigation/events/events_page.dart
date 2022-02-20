@@ -43,31 +43,33 @@ class Events extends GetView<EventsController>{
                     if(!connected){
                       return alert;
                     }
-                     return Column(
-                       children: [
-                         SizedBox(height: 1,),
-                         SelectedStation(),
-                         SizedBox(height: 1,),
-                         Table(
+                     return SingleChildScrollView(
+                       child: Column(
+                         children: [
+                           SizedBox(height: 1,),
+                           SelectedStation(),
+                           SizedBox(height: 1,),
+                           Table(
 
-                           border: TableBorder.all(color: AppColors.getDynamicTextColor(),width: 1,),
-                           children: [
+                             border: TableBorder.all(color: AppColors.getDynamicTextColor(),width: 1,),
+                             children: [
 
-                             TableRow(
-                               decoration: BoxDecoration(color: Colors.white,),
-                               children: [
-                                 Text('Point Name',textAlign: TextAlign.center,style: TextStyle(color: Colors.black,height:1.5,fontSize: 16,fontWeight: FontWeight.bold) ),
-                                 Text('Timestamp',textAlign: TextAlign.center,style: TextStyle(color: Colors.black,height:1.5,fontSize: 16,fontWeight: FontWeight.bold),),
-                                 Text('Status',textAlign: TextAlign.center,style: TextStyle(color: Colors.black,height:1.5,fontSize: 16,fontWeight: FontWeight.bold),),
-                               ],
-                             ),
-                           ],
-                         ),
-                         SizedBox(height: 1,),
-                         Expanded(
-                           child: EventsListView(),
-                         ),
-                       ],
+                               TableRow(
+                                 decoration: BoxDecoration(color: Colors.white,),
+                                 children: [
+                                   Text('Point Name',textAlign: TextAlign.center,style: TextStyle(color: Colors.black,height:2,fontSize: 16,fontWeight: FontWeight.bold) ),
+                                   Text('Timestamp',textAlign: TextAlign.center,style: TextStyle(color: Colors.black,height:2,fontSize: 16,fontWeight: FontWeight.bold),),
+                                   Text('Status',textAlign: TextAlign.center,style: TextStyle(color: Colors.black,height:2,fontSize: 16,fontWeight: FontWeight.bold),),
+                                 ],
+                               ),
+                             ],
+                           ),
+                           SizedBox(height: 1,),
+                           Expanded(
+                             child: EventsListView(),
+                           ),
+                         ],
+                       ),
                      );
 
                   },

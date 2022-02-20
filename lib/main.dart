@@ -68,9 +68,6 @@ class MyApp extends StatelessWidget {
       darkTheme: amcThemeService.loadDarkTheme(),
       themeMode: amcThemeService.getThemeMode(),
     );
-
-
-
   }
 
 }

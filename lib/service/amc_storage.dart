@@ -1,23 +1,25 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+
 import 'package:get_storage/get_storage.dart';
 
 import 'oauth2_dio.dart';
 
-final storage=GetStorage();
-
 class OAuthSecureStorage extends OAuthStorage {
+  // late final FlutterSecureStorage storage;
+  final storage=GetStorage();
   static final String accessTokenKey = 'accessToken';
   static final String refreshTokenKey = 'refreshToken';
   static final String expirationKey = 'expiration';
+  static final String scopeKey = 'scope';
+  static final String profileInfoKey = 'profileInfo';
 
   @override
   Future<OAuthToken> fetch() async {
     return OAuthToken(
-        accessToken: storage.read(accessTokenKey),
-        refreshToken: storage.read(refreshTokenKey),
-        expiration: DateTime.fromMillisecondsSinceEpoch(storage.read(expirationKey)));
+        accessToken: await storage.read(accessTokenKey),
+        refreshToken: await storage.read(refreshTokenKey),
+        scope: await storage.read(scopeKey),
+        profileInfo: await storage.read(profileInfoKey),
+        expiration: DateTime.fromMillisecondsSinceEpoch(await storage.read(expirationKey) ?? 0 ));
 
     /*return OAuthToken.fromMap ({
       "access_token": await storage.read(accessTokenKey),
@@ -31,6 +33,8 @@ class OAuthSecureStorage extends OAuthStorage {
     await storage.write(accessTokenKey,  token.accessToken);
     await storage.write( refreshTokenKey, token.refreshToken);
     await storage.write( expirationKey,token.expiration!.millisecondsSinceEpoch);
+    await storage.write( scopeKey,token.scope);
+    await storage.write(profileInfoKey, token.profileInfo);
     return token;
   }
 
@@ -38,15 +42,7 @@ class OAuthSecureStorage extends OAuthStorage {
     await storage.remove( accessTokenKey);
     await storage.remove( refreshTokenKey);
     await storage.remove( expirationKey);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      // add this
-
-    );
+    await storage.remove( scopeKey);
+    await storage.remove( profileInfoKey);
   }
 }
