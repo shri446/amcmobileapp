@@ -53,8 +53,8 @@ class MyApp extends StatelessWidget {
       getPages: [
 
        // GetPage(name: "/splash", page:()=> SplashPage(),binding: Splash_Binding()),
-        GetPage(name: "/loginpage", page:()=> LoginPage(),binding: LoginPage_Binding()),
         GetPage(name: "/rootpage", page:()=> RootPage()),
+        GetPage(name: "/loginpage", page:()=> LoginPage(),binding: LoginPage_Binding()),
         GetPage(name: "/realtime", page:()=> Realtime(),binding: RealTimeBinding()),
         GetPage(name: "/network", page:()=> Network(),binding: NetworkBinding()),
         GetPage(name: "/reports", page:()=> Reports(),binding: ReportsBinding()),

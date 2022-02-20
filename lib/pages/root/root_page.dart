@@ -19,31 +19,31 @@ class RootPage extends GetView{
         appBar: navAppbar(),
         body: Container(
         padding: EdgeInsets.all(10),
-    height: MediaQuery.of(context).size.height,
-    width: double.infinity,
-    child: Column(
-    children: [
-    SizedBox(
-    height: 180,
-    width: 370,
-    child: Carousel(
-    images: [
-    AssetImage("assets/images/power3.jpg",),
-    AssetImage("assets/images/wall1.jpg"),
-    AssetImage("assets/images/wall2.jpg",),
-    ],
-    dotSize: 4.0,
-    dotSpacing: 15.0,
-    dotColor: Colors.lightGreenAccent,
-    indicatorBgPadding: 5.0,
-    dotBgColor: Colors.purple.withOpacity(0.5),
-    borderRadius: true,
-    )
-    ),
-      SizedBox(height:10),
-      createPages()
-      ]
-    )
+        // height: MediaQuery.of(context).size.height,
+        //width: double.infinity,
+        child: Column(
+        children: [
+          SizedBox(
+            height: 180,
+            // width: 370,
+            child: Carousel(
+            images: [
+              AssetImage("assets/images/power3.jpg",),
+              AssetImage("assets/images/wall1.jpg"),
+              AssetImage("assets/images/wall2.jpg",),
+            ],
+            dotSize: 4.0,
+            dotSpacing: 15.0,
+            dotColor: Colors.lightGreenAccent,
+            indicatorBgPadding: 5.0,
+            dotBgColor: Colors.purple.withOpacity(0.5),
+            borderRadius: true,
+          )
+        ),
+          SizedBox(height:10),
+          createPages()
+        ]
+      )
         )
     );
   }
