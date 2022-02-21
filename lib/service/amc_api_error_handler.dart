@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
-import 'package:amcmobile/service/authenticated_apiservice.dart';
+import 'package:amcmobile/service/authenticated_api_service.dart';
 import 'package:dio/dio.dart';
 
 import 'package:get/get.dart';
@@ -19,7 +19,7 @@ class AmcApiErrorHandler extends InterceptorsWrapper{
       var error=e.response!.data['error'];
       print(e.response!.data);
       if(error=='invalid_token' || error=='invalid_grant'){
-        Get.find<ApiService1>().logout();
+        Get.find<AuthenticatedApiService>().logout();
         showSnackBar("Error","Invalid Token");
       }else{
         showSnackBar("Error", error);

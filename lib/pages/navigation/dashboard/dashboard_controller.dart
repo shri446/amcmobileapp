@@ -1,10 +1,10 @@
 import 'package:amcmobile/domain/time_value_object.dart';
 import 'package:amcmobile/pages/navigation/dashboard/charts/daily/daily_chart_page.dart';
-import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../service/authenticated_api_service.dart';
 import 'charts/daily/daily_chart_controller.dart';
 import 'charts/monthly/monthly_chart_controller.dart';
 import 'charts/monthly/monthly_chart_page.dart';
@@ -12,7 +12,7 @@ import 'charts/yearly/yearly_chart_controller.dart';
 import 'charts/yearly/yearly_chart_page.dart';
 
 class DashboardController extends GetxController{
-  final ApiService1 apiService=Get.find<ApiService1>();
+  final AuthenticatedApiService apiService=Get.find<AuthenticatedApiService>();
   var statistics=<TimeValueObject>[].obs;
   var timstamp=0.obs;
   var cgs=[].obs;

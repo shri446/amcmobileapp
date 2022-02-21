@@ -1,11 +1,12 @@
 
-import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:amcmobile/service/timer_service.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../service/authenticated_api_service.dart';
+
 class EventsController extends GetxController {
- final ApiService1 apiservice = Get.find<ApiService1>();
+ final AuthenticatedApiService apiservice = Get.find<AuthenticatedApiService>();
  final TimerService timerService = Get.find<TimerService>();
  final RefreshController refreshController=RefreshController(initialRefresh: false,);
  final String title = 'Events';
@@ -33,7 +34,7 @@ var timestamp2='25-12-2021 11:15:31'.obs;
  }
 
  getAllStations() {
-  apiservice.getAllStations().then((response) {
+  /*apiservice.getAllStations().then((response) {
    print(response);
    stations.value = response.data['stations'];
 
@@ -45,16 +46,16 @@ var timestamp2='25-12-2021 11:15:31'.obs;
    }
    );
   }
-  );
+  );*/
  }
 
  getdata(){
-  apiservice.getAllEvents(selectedStation.value["id"], "Events").then((response) {
+  /*apiservice.getAllEvents(selectedStation.value["id"], "Events").then((response) {
    events.value=response.data['events'];
     timestamp2.value=response.data['timestamp'];
    refreshController.refreshCompleted();
    print(response);
-  });
+  });*/
 
  }
 
@@ -63,10 +64,10 @@ var timestamp2='25-12-2021 11:15:31'.obs;
  onSelectStation(Map value){
   selectedStation.value=value;
   print(selectedStation.value);
-  apiservice.getAllEvents(selectedStation.value["id"], "Events").then((response) {
+  /*apiservice.getAllEvents(selectedStation.value["id"], "Events").then((response) {
    events.value=response.data["events"];
    print(events.value);
   }
-  );
+  );*/
  }
 }

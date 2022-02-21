@@ -32,24 +32,29 @@ class LoginPage extends GetView<LoginController> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.symmetric(horizontal: 40),
-                child: TextField(
+                child: TextFormField(
+                  initialValue: controller.userName.value,
                   decoration: InputDecoration(
                       labelText: "Username",
                     icon: Icon(Icons.person),
                   ),
+                  onChanged: (text)=>controller.onChangeUsername(text),
                 ),
               ),
               SizedBox(height: size.height * 0.03),
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.symmetric(horizontal: 40),
-                child: TextField(
+                child: TextFormField(
+                  initialValue: controller.password.value,
                   decoration: InputDecoration(
                     labelText: "Password",
                     icon: Icon(Icons.lock),
                   ),
                   obscureText: true,
+                  onChanged: (text)=>controller.onChangePassword(text),
                 ),
+
               ),
               SizedBox(height: size.height * 0.05),
               Container(
@@ -70,23 +75,10 @@ class LoginPage extends GetView<LoginController> {
                     ),
                     child: Row(
                         children: [
+                          // Text(controller.errorText.value,style: TextStyle(color: Colors.red.shade800,fontWeight: FontWeight.bold),),
                           MaterialButton(
                             child: Text("Login",style: TextStyle(fontSize: 18,),),
-                            onPressed: (){
-                              int j=controller.users.length;
-                              for(int i=0;i<=j;i++){
-                                if(controller.userName.text== controller.users[i]["username"]&& controller.password.text==controller.users[i]["password"])
-                                {
-                                  Get.toNamed("/rootpage");
-                                  controller.userName.clear();
-                                  controller.password.clear();
-                                  break;
-                                }
-                                else{
-                                  Get.toNamed("/loginpage");
-                                }
-                              }
-                            },
+                            onPressed: ()=>controller.login()
                           ),
                         ],
                       )

@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:amcmobile/service/authenticated_apiservice.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../service/authenticated_api_service.dart';
+
 
 
 
 class ChangePasswordController extends GetxController with StateMixin<String>{
-  ApiService1 apiService1=Get.find<ApiService1>();
+  AuthenticatedApiService authenticatedApiService=Get.find<AuthenticatedApiService>();
 
   var errorText=''.obs;
   var newPassword=''.obs;
@@ -33,7 +33,7 @@ changePassword(){}
     }else if(newPassword.value!=confirmPassword.value){
       errorText.value="Password doesn't match";
     }else {
-      apiService1.postRequest1("/stomp_protected/change_password", {'newpassword': newPassword.value.trim()},this).then((response) {
+      AuthenticatedApiService.postRequest1("/stomp_protected/change_password", {'newpassword': newPassword.value.trim()},this).then((response) {
         if(response.data['status']=="Success") {
           Get.back();
           deleteController();

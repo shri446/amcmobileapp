@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../../service/authenticated_api_service.dart';
+
 
 class UsersController extends GetxController {
-  ApiService1 apiservice = Get.find();
+  AuthenticatedApiService apiservice = Get.find();
 
   var loginhistory = [].obs;
   var timestamp=0.obs;
@@ -33,7 +34,7 @@ class UsersController extends GetxController {
 
 
   getData() {
-    apiservice.getAlllogins().then((response){
+    /*apiservice.getAlllogins().then((response){
    // apiService.getAllUsers().then((response) {
       print(response);
       print("data");
@@ -43,7 +44,7 @@ class UsersController extends GetxController {
       print(timestamp);
 
       // refreshController.refreshCompleted();
-    });
+    });*/
   }
   forceLogout(String name){
     Get.back();

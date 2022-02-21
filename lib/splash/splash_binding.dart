@@ -10,6 +10,6 @@ class Splash_Binding extends Bindings{
   @override
   void dependencies() {
     Get.lazyPut(() => SplashController());
-    Get.lazyPut(() => ApiService1());
+    Get.lazyPut(() => AuthenticatedApiService());
   }
 }*/

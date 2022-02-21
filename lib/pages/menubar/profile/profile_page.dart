@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
+import '../../../service/authenticated_api_service.dart';
+
 class ProfilePage extends GetView<ProfileController>{
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class ProfilePage extends GetView<ProfileController>{
            children: [
              // CircleAvatar(child: Icon(Icons.person, size: 40,),),
              Text('Logged in as: '),
-             Text(controller.apiService1.getUsername(), style: TextStyle(fontWeight: FontWeight.bold),)
+             Text(controller.authenticatedApiService.getUsername(), style: TextStyle(fontWeight: FontWeight.bold),)
            ],
         ),
          Divider(height: 3.0,),

@@ -1,10 +1,11 @@
 
 import 'package:amcmobile/domain/time_value_object.dart';
-import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:amcmobile/service/timer_service.dart';
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+import '../../../service/authenticated_api_service.dart';
 
 class TrendsController extends GetxController {
   final String title = 'Trends';
@@ -13,7 +14,7 @@ class TrendsController extends GetxController {
 
 
 
-  ApiService1 apiservice = Get.find();
+  AuthenticatedApiService apiservice = Get.find();
   var selectedStation = {}.obs;
   var selectedPoint = {}.obs;
   var stations = [].obs; //
@@ -38,7 +39,7 @@ class TrendsController extends GetxController {
   }
 
   getAllStations() {
-    apiservice.getAllStations().then((response) {
+    /*apiservice.getAllStations().then((response) {
       if(response.statusCode==200){
       print(response);
       stations.value = response.data['stations'];
@@ -55,7 +56,7 @@ class TrendsController extends GetxController {
 
       });
 
-    }});
+    }});*/
   }
 
 
@@ -65,17 +66,18 @@ class TrendsController extends GetxController {
     print(selectedStation.value);
     /*lastindex=0;
     onTabSelect(lastindex);*/
-    apiservice.getTrends(selectedStation.value["id"], "aDaily").then((
-        response) {
-      print(response);
-     spoints.value = response.data['aDpoints'];
-      selectedPoint.value = response.data['aDpoints'][0];
-     // print(selectedPoint.value);
-     // print("kalyan");
-     // lastindex=0;
-     // onTabSelect(lastindex);
 
-    });
+    /*apiservice.getTrends(selectedStation.value["id"], "aDaily").then((
+        response) {
+        print(response);
+        spoints.value = response.data['aDpoints'];
+        selectedPoint.value = response.data['aDpoints'][0];
+       // print(selectedPoint.value);
+       // print("kalyan");
+       // lastindex=0;
+       // onTabSelect(lastindex);
+
+    });*/
   }
 
 

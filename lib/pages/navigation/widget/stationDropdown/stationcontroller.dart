@@ -1,10 +1,11 @@
 
-import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../../service/authenticated_api_service.dart';
+
 class StationDropdown extends GetxController {
-  ApiService1 apiservice = Get.find();
+  AuthenticatedApiService apiservice = Get.find();
 
    final RefreshController refreshController=RefreshController(initialRefresh: false,);
 
@@ -21,7 +22,7 @@ class StationDropdown extends GetxController {
   }
 
   getAllStations() {
-    apiservice.getAllStations().then((response) {
+    /*apiservice.getAllStations().then((response) {
       print(response);
       stations.value = response.data['stations'];
       selectedStation.value = response.data['stations'][0];
@@ -30,6 +31,6 @@ class StationDropdown extends GetxController {
       refreshController.refreshCompleted();
     }).onError((error, stackTrace) {
     }
-    );
+    );*/
   }
 }

@@ -1,12 +1,16 @@
 import 'package:amcmobile/pages/menubar/change_theme/change_theme_page.dart';
-import 'package:amcmobile/pages/navigation/admin/apps/apps_controller.dart';
-import 'package:amcmobile/service/authenticated_apiservice.dart';
+import 'package:amcmobile/service/authenticated_api_service.dart';
 import 'package:amcmobile/themes/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-showApplicationControlDialog(Map map,String status){
+import '../../menubar/change_password/change_password_controller.dart';
+import '../../menubar/change_password/change_password_page.dart';
+import '../../menubar/profile/profile_controller.dart';
+import '../../menubar/profile/profile_page.dart';
+
+/*showApplicationControlDialog(Map map,String status){
   AppsController controller=Get.find<AppsController>();
   Get.defaultDialog(
       barrierDismissible: false,
@@ -16,7 +20,7 @@ showApplicationControlDialog(Map map,String status){
       textConfirm: status,
       onConfirm: ()=>controller.takeAction(map, status.toUpperCase())
   );
-}
+}*/
 
 void showSnackBar(String title,String message){
   Get.snackbar(
@@ -94,7 +98,7 @@ AppBar navAppbar(){
           tooltip: 'Actions',
           elevation: 20,
           onSelected:(entry)=>entry.value.call(),
-          itemBuilder: (context) => ApiService1.to.authenticatedMenuItems.entries.map((entry) =>
+          itemBuilder: (context) => AuthenticatedApiService.to.authenticatedMenuItems.entries.map((entry) =>
               PopupMenuItem(
                 value: entry,
                 child: Text(entry.key.toString()),
@@ -104,7 +108,7 @@ AppBar navAppbar(){
   );
 }
 
-AppBar eventsAppbar(String title, String timestamp2,ApiService1 apiService){
+AppBar eventsAppbar(String title, String timestamp2,AuthenticatedApiService apiService){
   return AppBar(
     leading: IconButton(
       icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -136,7 +140,7 @@ AppBar eventsAppbar(String title, String timestamp2,ApiService1 apiService){
   );
 }
 
-AppBar networkAppbar(String title, String timestamp2,ApiService1 apiService){
+AppBar networkAppbar(String title, String timestamp2,AuthenticatedApiService apiService){
   var timestamp;
   return AppBar(
     leading: IconButton(
@@ -171,7 +175,7 @@ AppBar networkAppbar(String title, String timestamp2,ApiService1 apiService){
   );
 }
 
-AppBar createAppbar(String title,String timestamp2,ApiService1 apiService,){
+AppBar createAppbar(String title,String timestamp2,AuthenticatedApiService apiService,){
   return AppBar(
     leading: IconButton(
       icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -370,4 +374,79 @@ class _AppDrawerState extends State<AppDrawer> {
       ),
     );
   }
+
+
+}
+
+Widget showLoginProgress(){
+  return SimpleDialog(
+    // key: key,
+      backgroundColor: Colors.transparent,
+      children: <Widget>[
+        Center(
+          child: Column(children: [
+            CircularProgressIndicator(),
+            SizedBox(height: 10,),
+            Text("Please Wait....",style: TextStyle(color: Colors.blueAccent),)
+          ]),
+        )
+      ]);
+}
+
+Widget showAlertDialog(){
+  return AlertDialog(
+    title: Text("Alert"),
+    content: Text("Are you sure want to exit"),
+    actions: [
+      ElevatedButton(
+        child: Text('sign out'),
+        onPressed: () => {/*Navigator.of(context).pop(true);*/},
+      ),
+      ElevatedButton(
+          child: Text('cancel'),
+          onPressed: () => {/*Navigator.of(context).pop(false);*/}
+      ),
+    ],
+
+  );
+
+}
+
+showProfileInfo() {
+  Get.lazyPut(() => ProfileController());
+  Get.defaultDialog(
+    title: "Profile",
+    // textConfirm: "Save",
+    barrierDismissible: true,
+    content: ProfilePage(),
+    radius: 20,
+    //onConfirm: () => Get.find<ProfileController>().saveProfileDetails(),
+  ).then((value) => Get.delete<ProfileController>(force: true));
+  /*Get.defaultDialog(
+        title: "Profile",
+        barrierDismissible: true,
+        content: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            CircleAvatar(child: Icon(Icons.person, size: 40,),),
+            Text('Logged in as '),
+            Text(getUsername(), style: TextStyle(fontWeight: FontWeight.bold),)
+          ],
+        ),
+      );*/
+}
+
+changePassword() {
+  Get.lazyPut(() => ChangePasswordController());
+  Get.defaultDialog(
+    title: "Change Password",
+    textConfirm: "Confirm",
+    textCancel: "Cancel",
+    barrierDismissible: false,
+    content: ChangePasswordPage(),
+    radius: 20,
+    onCancel: () => Get.delete<ChangePasswordController>(force: true),
+    onWillPop: () => Get.delete<ChangePasswordController>(force: true),
+    onConfirm: () => Get.find<ChangePasswordController>().changePassword(),
+  ).then((value) => Get.delete<ChangePasswordController>(force: true));
 }

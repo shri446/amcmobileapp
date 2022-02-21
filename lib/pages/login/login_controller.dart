@@ -1,156 +1,90 @@
+import 'dart:io';
 
-import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
-import 'package:amcmobile/service/apiservice.dart';
-import 'package:amcmobile/service/authenticated_apiservice.dart';
+import 'package:amcmobile/service/authenticated_api_service.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginController extends GetxController{
- final ApiService1 apiService=Get.find<ApiService1>();
- final userName=TextEditingController();
- final password=TextEditingController();
+import '../navigation/widget/appbar_widgets.dart';
 
- var usernameErrorText=''.obs;
- var passwordErrorText=''.obs;
+class LoginController extends GetxController {
+  final AuthenticatedApiService authenticatedApiService = Get.find<
+      AuthenticatedApiService>();
 
+  final userName = ''.obs;
+  final password = ''.obs;
+  final errorText = ''.obs;
 
-var users=[].obs;
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
-
-
- @override
- void onInit(){
-   super.onInit();
- }
-
-
-
-@override
+  @override
   void onReady() {
-  print("Opened "+this.runtimeType.toString());
-  getAllusers();
+    print("Opened " + this.runtimeType.toString());
+    super.onReady();
   }
 
- @override
- void onClose() {
-   // usernameController.dispose();
-   // passwordController.dispose();
-   super.onClose();
- }
- bool validateUsername(String value) {
-   if (value.isEmpty) {
-     usernameErrorText.value='Username required';
-     return false;
-   }
-   return true;
- }
+  @override
+  void onClose() {
+    super.onClose();
+  }
 
- bool validatePassword(String value) {
-   if (value.isEmpty) {
-     passwordErrorText.value= 'Password required';
-     return false;
-   }
-   return true;
- }
+  onChangeUsername(String  name){
+    userName.value=name;
+  }
 
-  void getAllusers(){
-   apiService.getAllUsers().then((response){
-  print(response);
-  users.value=response.data['users'];
- }).onError((error, stackTrace) {
-   Get.back();
-   DioError dioError=error as DioError;
-   String? message;
-   if(dioError.response!=null) {
-     message = dioError.response!.data['error_description'];
-if (error == 'invalid_grant') {
-            message = 'Invalid Username/Password';
-          } else if (error == 'unauthorized') {
-            message = 'Unauthorized';
-          }else{
-            message=dioError.response!.data;
+  onChangePassword(String pwd){
+    password.value=pwd;
+  }
+
+  login() {
+    if (userName.isEmpty) {
+      errorText.value = "Username cannot empty";
+    } else if (password.isEmpty) {
+      errorText.value = "Password cannot be empty";
+    } else {
+      Connectivity().checkConnectivity().then((result) {
+        bool status = (result == ConnectivityResult.none) ? false : true;
+        if (status) {
+          var dialog = Get.dialog(showLoginProgress(), barrierDismissible: false);
+              authenticatedApiService.storage.erase();
+              authenticatedApiService.login(userName.value, password.value).then((token) async {
+                int expirationTime = DateTime.fromMillisecondsSinceEpoch(authenticatedApiService.storage.read("expiration")).difference(DateTime.now()).inSeconds;
+                authenticatedApiService.storage.write("tokenValidityTime", (expirationTime - expirationTime / 5).toInt());
+                authenticatedApiService.storage.write("username", userName.value);
+
+                Get.back(); //rootDelegate.popHistory();
+                // authenticatedApiService.initialRoute = '/navigation';
+                Get.offNamed("/rootpage");
+                //authenticatedApiService.saveProfileInfoDialog();
+                //authenticatedApiService.disconnectFromStompServer();
+                authenticatedApiService.initializeStompClientAndConnect();
+                authenticatedApiService.listenForNetworkChanges();
+            }).onError((error, stackTrace) {
+              Get.back();
+              if (error is DioError) {
+                DioError dioError = error as DioError;
+                errorText.value = dioError.response != null ? dioError.response!
+                    .data['error_description'] : dioError.error.toString();
+
+                /*if(errorText.value=='invalid_grant'){
+                  errorText.value='Bad Credentials';
+                }*/
+                if (dioError.error is SocketException) {
+                  errorText.value = "Please try again after sometime";
+                }
+              } else {
+                print(error);
+              }
+            });
+          } else {
+            errorText.value = "Check Internet connection";
           }
-
-   }else{
-     message=dioError.error.toString();
-   }
-   showSnackBar("Failed", '$message ,Try again');
- });
+      });
+    }
   }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
- var username=''.obs;
- var password=''.obs;
- var usernameErrorText=''.obs;
- var passwordErrorText=''.obs;
- var errorText=''.obs;
-
- onChangeUsername(String val){
-   username.value=val;
- }
-
- onChangePassword(String val){
-   password.value=val;
- }
-
- @override
-  void onInit(){
-   username.value='srikanth';
-   password.value='srikanth123';
-   super.onInit();
- }
- @override
- void onReady() {
-   print("Opened "+this.runtimeType.toString());
- }
-
- @override
- void onClose() {
-   super.onClose();
- }
- bool validateUsername(String value) {
-  if (value.isEmpty) {
-   usernameErrorText.value='Username required';
-   return false;
-  }
-  return true;
- }
-
- bool validatePassword(String value) {
-  if (value.isEmpty) {
-   passwordErrorText.value= 'Password required';
-   return false;
-  }
-  return true;
- }
-
- void processLogin() {
-  usernameErrorText.value = '';
-  passwordErrorText.value = '';
-  errorText.value = '';
-  if (validateUsername(username.value) && validatePassword(password.value)) {
-
-  }
- }
-*/
 

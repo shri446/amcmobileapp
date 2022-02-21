@@ -1,5 +1,4 @@
 import 'package:amcmobile/pages/navigation/admin/admin_controller.dart';
-import 'package:amcmobile/pages/navigation/admin/apps/apps_page.dart';
 import 'package:amcmobile/pages/navigation/admin/login_history/user.dart';
 import 'package:amcmobile/pages/navigation/admin/manage_users/manage_users.dart';
 import 'package:amcmobile/pages/navigation/admin/overview/overview_page.dart';
@@ -39,7 +38,7 @@ class Admin extends GetView<AdminController>{
             Users(),
 
             OverviewPage(),
-            AppsPage(),
+            //AppsPage(),
           //  ManageUsers(),
           ],
           initialIndex: 0,

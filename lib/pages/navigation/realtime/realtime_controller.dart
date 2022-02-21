@@ -1,12 +1,13 @@
 
 
-import 'package:amcmobile/service/authenticated_apiservice.dart';
 import 'package:amcmobile/service/timer_service.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../service/authenticated_api_service.dart';
+
 class RealTimeController extends GetxController {
-  ApiService1 apiservice = Get.find();
+  AuthenticatedApiService apiservice = Get.find();
   final TimerService timerService = Get.find<TimerService>();
   final RefreshController refreshController=RefreshController(initialRefresh:false);
   final String title = 'RealTime';
@@ -42,7 +43,7 @@ class RealTimeController extends GetxController {
 
 
   getAllStations() {
-    apiservice.getAllStations().then((response) {
+    /*apiservice.getAllStations().then((response) {
       print(response);
       //getservertime();
       stations.value = response.data['stations'];
@@ -55,11 +56,11 @@ class RealTimeController extends GetxController {
     }).onError((error, stackTrace) {
       refreshController.refreshFailed();
     }
-    );
+    );*/
   }
 
   getData(){
-    apiservice.getPoints(selectedStation.value["id"], "Analog").then((
+    /*apiservice.getPoints(selectedStation.value["id"], "Analog").then((
         response) {
       analogPoints.value = response.data['points'];
 
@@ -70,7 +71,7 @@ class RealTimeController extends GetxController {
 
     }).onError((error, stackTrace) {
       refreshController.refreshFailed();
-    });
+    });*/
 
   }
 
@@ -86,32 +87,32 @@ class RealTimeController extends GetxController {
     }
   }
   getservertime(){
-    apiservice.servertime().then((response){
+    /*apiservice.servertime().then((response){
       time.value=response.data['ctimestamp'];
       refreshController.refreshCompleted();
       print(time.value);
-    } );
+    } );*/
   }
 
   void onTabSelect(int index) {
     if (index == 0) {
-      apiservice.getPoints(selectedStation.value["id"], "Analog").then((
+      /*apiservice.getPoints(selectedStation.value["id"], "Analog").then((
           response) {
         print(index);
         print(response);
         analogPoints.value = response.data['points'];
         lastindex=0;
         // analogController.getData();
-      });
+      });*/
     } else if (index == 1) {
       // digitalController.getdata();
-      apiservice.getPoints(selectedStation.value["id"], "Digital").then((
+      /*apiservice.getPoints(selectedStation.value["id"], "Digital").then((
           response) {
         print(index);
         print(response);
         digitalPoints.value = response.data['Digital'];
         lastindex=1;
-      });
+      });*/
     }
 
    /* List getTabs() {

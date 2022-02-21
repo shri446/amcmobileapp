@@ -1,15 +1,14 @@
 import 'dart:collection';
 import 'dart:io';
 
-import 'package:amcmobile/service/authenticated_apiservice.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../service/authenticated_api_service.dart';
+
 
 class ProfileController extends GetxController with StateMixin<String>{
-  ApiService1 apiService1=Get.find<ApiService1>();
+  AuthenticatedApiService authenticatedApiService=Get.find<AuthenticatedApiService>();
   GetStorage storage=GetStorage();
 
   var errorText=''.obs;

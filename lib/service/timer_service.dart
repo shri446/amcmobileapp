@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter_fgbg/flutter_fgbg.dart';
+
 import 'package:get/get.dart';
 
  class TimerService extends GetxService{
@@ -34,7 +34,7 @@ import 'package:get/get.dart';
   @override
   void onInit() {
     startTimer();
-    subscription=FGBGEvents.stream.listen((event) {
+    /*subscription=FGBGEvents.stream.listen((event) {
        if(event == FGBGType.background){
          print("App went to background");
          stopTimer();
@@ -42,7 +42,7 @@ import 'package:get/get.dart';
          print("App Came to foreground");
          startTimer();
        }
-    });
+    });*/
   }
 
   @override

@@ -23,19 +23,21 @@ import 'package:amcmobile/pages/navigation/reports/reports_binding.dart';
 import 'package:amcmobile/pages/navigation/reports/reports_page.dart';
 import 'package:amcmobile/pages/navigation/trends/trends_binding.dart';
 import 'package:amcmobile/service/amctheme_service.dart';
-import 'package:amcmobile/service/authenticated_apiservice.dart';
+import 'package:amcmobile/service/authenticated_api_service.dart';
 import 'package:amcmobile/service/timer_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 void main() {
-SystemChrome.setSystemUIOverlayStyle(
-  SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  ),
-);
-  Get.lazyPut(() => ApiService1());
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
+  GetStorage.init();
+  Get.lazyPut(() => AuthenticatedApiService());
   Get.lazyPut(() => TimerService());
   Get.lazyPut(() => AmcThemeService());
   runApp(MyApp());
@@ -48,13 +50,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/rootpage",
+      initialRoute: "/loginpage",
       defaultTransition: Transition.leftToRight,
       getPages: [
 
        // GetPage(name: "/splash", page:()=> SplashPage(),binding: Splash_Binding()),
         GetPage(name: "/rootpage", page:()=> RootPage()),
-        GetPage(name: "/loginpage", page:()=> LoginPage(),binding: LoginPage_Binding()),
+        GetPage(name: "/loginpage", page:()=> LoginPage(),binding: LoginPageBinding()),
         GetPage(name: "/realtime", page:()=> Realtime(),binding: RealTimeBinding()),
         GetPage(name: "/network", page:()=> Network(),binding: NetworkBinding()),
         GetPage(name: "/reports", page:()=> Reports(),binding: ReportsBinding()),
