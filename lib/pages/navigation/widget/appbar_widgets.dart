@@ -353,7 +353,9 @@ class _AppDrawerState extends State<AppDrawer> {
                          CupertinoDialogAction(
                            textStyle: TextStyle(color: Colors.red),
                            child: Text("Logout"),
-                           onPressed:()=>{} ,
+                           onPressed:()=>{
+                             Get.find<AuthenticatedApiService>().logout()
+                           } ,
                             ),
                        ],
                      );

@@ -56,7 +56,8 @@ class LoginPage extends GetView<LoginController> {
                 ),
 
               ),
-              SizedBox(height: size.height * 0.05),
+              SizedBox(height: 5),
+              Text(controller.errorText.value,style: TextStyle(color: Colors.red.shade800,fontWeight: FontWeight.bold),),
               Container(
                 alignment: Alignment.centerRight,
                 margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),

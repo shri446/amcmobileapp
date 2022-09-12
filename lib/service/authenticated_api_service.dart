@@ -115,7 +115,7 @@ class AuthenticatedApiService extends GetxService  {
   checkNetworkAfterMain() async{
     ConnectivityResult result=await Connectivity().checkConnectivity();
     networkStatus.value=(result == ConnectivityResult.none) ? false : true;
-    initialRoute = '/navigation';
+    initialRoute = '/rootpage';
 
     if (networkStatus.value) {
       try {
@@ -128,7 +128,7 @@ class AuthenticatedApiService extends GetxService  {
             int? status = dioError.response?.statusCode;
             log(dioError.response);
             if (status == 400) { //invalid grant (RefreshToken)
-              initialRoute = '/login';
+              initialRoute = '/loginpage';
             }
           } else {
             log(e.toString());
@@ -214,7 +214,7 @@ class AuthenticatedApiService extends GetxService  {
     initializeStompClientAndConnect() {
        log("called Authenticated StompClient Connect method...");
        if(stompClient==null) {
-          String url = getWebsocketUrl() +  '/stomp_protected';
+          String url = getWebsocketUrl() +  '/oauth/stomp_protected';
           log("Connecting to url=" + url);
           stompClient = StompClient(
               config: StompConfig(
@@ -315,7 +315,7 @@ class AuthenticatedApiService extends GetxService  {
            showSnackBar("Error", "Check Internet connection...");
          }else {
            Get.dialog(showLoginProgress(), barrierDismissible: false);
-           postRequest("/stomp_protected/logout", {}).then((response) {
+           postRequest("/oauth/stomp_protected/logout", {}).then((response) {
              Get.back();
              if (response.statusCode == 200) {
                print(response);

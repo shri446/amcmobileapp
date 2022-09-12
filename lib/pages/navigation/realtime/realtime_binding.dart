@@ -9,7 +9,6 @@ class RealTimeBinding extends Bindings{
   @override
   void dependencies() {
     Get.lazyPut(() => RealTimeController ());
-    Get.lazyPut(() => AmcThemeService());
     Get.lazyPut(() => StationDropdown());
   }
 }

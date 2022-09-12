@@ -30,7 +30,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
-void main() {
+Future<void> main() async{
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -40,17 +40,22 @@ void main() {
   Get.lazyPut(() => AuthenticatedApiService());
   Get.lazyPut(() => TimerService());
   Get.lazyPut(() => AmcThemeService());
+
+  AuthenticatedApiService authenticatedApiService=Get.find<AuthenticatedApiService>();
+  await authenticatedApiService.checkNetworkAfterMain();
   runApp(MyApp());
 }
 //testgithub
 
 class MyApp extends StatelessWidget {
   AmcThemeService amcThemeService=Get.find<AmcThemeService>();
+  AuthenticatedApiService authenticatedApiService=Get.find<AuthenticatedApiService>();
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/loginpage",
+      initialRoute: authenticatedApiService.initialRoute,
       defaultTransition: Transition.leftToRight,
       getPages: [
 

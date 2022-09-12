@@ -11,10 +11,8 @@ import 'package:get/get.dart';
 class RootPage extends GetView{
   @override
   Widget build(BuildContext context) {
-    var _scaffoldKey = new GlobalKey<ScaffoldState>();
     context.theme;
     return Scaffold(
-        key: _scaffoldKey,
         endDrawer: AppDrawer(),
         appBar: navAppbar(),
         body: SingleChildScrollView(

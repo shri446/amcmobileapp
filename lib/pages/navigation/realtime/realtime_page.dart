@@ -23,25 +23,6 @@ class Realtime extends GetView<RealTimeController > {
       appBar: createAppbar(controller.title,controller.timestamp2.value,Get.find(),),
         body:Builder(
             builder: (BuildContext context) {
-              return OfflineBuilder(
-                  connectivityBuilder: (BuildContext context, ConnectivityResult connectivity, Widget child) {
-                    final bool connected = connectivity != ConnectivityResult.none;
-                    AlertDialog alert = AlertDialog(
-                      title: Text("Internet"),
-                      backgroundColor: AppColors.getThemeColor(),
-                      content: Text("please check internet connection"),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(50.0))),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, 'OK'),
-                          child: const Text('OK'),
-                        ),
-                      ],
-                    );
-                    if(!connected){
-                      return alert;
-                    }
                    return SingleChildScrollView(
                      child: Column(
                        children: [
@@ -73,16 +54,6 @@ class Realtime extends GetView<RealTimeController > {
                        ],
                      ),
                    );
-
-                  },
-                  child: Center(
-
-
-                    child: Text("ONLINE Or OFFLINE",),
-                  )
-              );
-
-
             }
         )
     ));
