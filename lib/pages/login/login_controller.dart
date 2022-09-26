@@ -8,8 +8,7 @@ import 'package:get/get.dart';
 import '../navigation/widget/appbar_widgets.dart';
 
 class LoginController extends GetxController {
-  final AuthenticatedApiService authenticatedApiService = Get.find<
-      AuthenticatedApiService>();
+  final AuthenticatedApiService authenticatedApiService = Get.find<AuthenticatedApiService>();
 
   final userName = ''.obs;
   final password = ''.obs;

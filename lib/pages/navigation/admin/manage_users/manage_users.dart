@@ -78,8 +78,7 @@ class ManageUsers extends GetView<ManageUsersController>{
                 ],
               )
               ),
-              */
-/*IconButton(
+IconButton(
                   onPressed: (){
                     Get.defaultDialog(
                         barrierDismissible: false,
@@ -90,7 +89,7 @@ class ManageUsers extends GetView<ManageUsersController>{
                         onConfirm: ()=>controller.forceLogout(controller.users[index]['user'],controller.users[index]['status'])
                     );
                   }, icon: Icon(Icons.power_settings_new)
-              )*//*
+              )
 
             ],
           ),
@@ -110,4 +109,5 @@ class ManageUsers extends GetView<ManageUsersController>{
     );
   }
 
-}*/
+}
+*/

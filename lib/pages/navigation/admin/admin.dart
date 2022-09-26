@@ -1,6 +1,5 @@
 import 'package:amcmobile/pages/navigation/admin/admin_controller.dart';
 import 'package:amcmobile/pages/navigation/admin/login_history/user.dart';
-import 'package:amcmobile/pages/navigation/admin/manage_users/manage_users.dart';
 import 'package:amcmobile/pages/navigation/admin/overview/overview_page.dart';
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
 import 'package:amcmobile/themes/app_colors.dart';
@@ -10,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
-import 'application_logs/logs.dart';
 
 class Admin extends GetView<AdminController>{
   @override
@@ -36,7 +34,6 @@ class Admin extends GetView<AdminController>{
 
           views: [
             Users(),
-
             OverviewPage(),
             //AppsPage(),
           //  ManageUsers(),

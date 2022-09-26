@@ -49,9 +49,7 @@ Widget loading() {
           Text("Loading, please wait..."),
         ],
       )
-
   );
-
 }
 
 
@@ -61,16 +59,17 @@ AppBar dashboardAppbar(String title){
       icon: Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () =>Get.back(),
     ),
+    leadingWidth: 40,
     // backgroundColor: Colors.transparent,
     centerTitle: false,
-    titleSpacing: 0,
+    titleSpacing: -15,
     title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
-          Image.asset("assets/images/gridx.png",width: 100,height: 50,),
+          Image.asset("assets/images/gridx_1.png",width: 100,height: 50,),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0,30,0,0),
-             child: Text(title,style: TextStyle(fontSize: 15)),
+            padding: const EdgeInsets.fromLTRB(0,15,0,0),
+             child: Text(title,style: TextStyle(fontSize: 20)),
           ),
         ]
     ),
@@ -85,7 +84,7 @@ AppBar navAppbar(){
     title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
-          Image.asset("assets/images/gridx.png",width: 100,height: 50,),
+          Image.asset("assets/images/gridx_1.png",width: 100,height: 50,),
           Padding(
             padding: const EdgeInsets.fromLTRB(0,30,0,0),
            // child: Text(title,style: TextStyle(fontSize: 15)),
@@ -114,20 +113,19 @@ AppBar eventsAppbar(String title, String timestamp2,AuthenticatedApiService apiS
       icon: Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () =>Get.back(),
     ),
-
+    leadingWidth: 40,
     //backgroundColor: Colors.transparent,
     centerTitle: false,
-    titleSpacing: 0,
+    titleSpacing: -15,
     title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
-          Image.asset("assets/images/gridx.png",width: 100,height: 50,),
+          Image.asset("assets/images/gridx_1.png",width: 100,height: 50,),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0,30,0,0),
-            child: Text(title,style: TextStyle(fontSize: 15)),
-
+            padding: const EdgeInsets.fromLTRB(0,15,0,0),
+            child: Text(title,style: TextStyle(fontSize: 20)),
           ),
-          SizedBox(width: 40,),
+          SizedBox(width: 50,),
           Column(
             children: [
               Padding(padding: const EdgeInsets.fromLTRB(0,5,0,0)),
@@ -136,7 +134,6 @@ AppBar eventsAppbar(String title, String timestamp2,AuthenticatedApiService apiS
           )
         ]
     ),
-
   );
 }
 
@@ -147,6 +144,7 @@ AppBar networkAppbar(String title, String timestamp2,AuthenticatedApiService api
       icon: Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () =>Get.back(),
     ),
+    leadingWidth: 40,
    /* shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         bottom: Radius.circular(20),
@@ -154,14 +152,14 @@ AppBar networkAppbar(String title, String timestamp2,AuthenticatedApiService api
     ),*/
    // backgroundColor: Colors.transparent,
     centerTitle: false,
-    titleSpacing: 0,
+    titleSpacing: -15,
     title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
-          Image.asset("assets/images/gridx.png",width: 100,height: 50,),
+          Image.asset("assets/images/gridx_1.png",width: 100,height: 50,),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0,30,0,0),
-            child: Text(title,style: TextStyle(fontSize: 15)),
+            padding: const EdgeInsets.fromLTRB(0,15,0,0),
+            child: Text(title,style: TextStyle(fontSize: 20)),
           ),
           SizedBox(width: 40,),
           Column(
@@ -181,17 +179,17 @@ AppBar createAppbar(String title,String timestamp2,AuthenticatedApiService apiSe
       icon: Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () =>Get.back(),
     ),
-
+    leadingWidth: 40,
     // backgroundColor:Colors.transparent,
     centerTitle: false,
-    titleSpacing: 0,
+    titleSpacing: -15,
     title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
-          Image.asset("assets/gridx.png",width: 100,height: 50,),
+          Image.asset("assets/images/gridx_1.png",width: 100,height: 50,),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0,30,0,0),
-            child: Text(title,style: TextStyle(fontSize: 15)),
+            padding: const EdgeInsets.fromLTRB(0,15,0,0),
+            child: Text(title,style: TextStyle(fontSize: 20)),
           ),
         ]
     ),
@@ -205,17 +203,18 @@ AppBar trendsAppbar(String title,){
       icon: Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () =>Get.back(),
     ),
+    leadingWidth: 40,
     // backgroundColor: Colors.transparent,
-    centerTitle: true,
-    titleSpacing: 0,
+    centerTitle: false,
+    titleSpacing: -15,
 
     title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
-          Image.asset("assets/images/gridx.png",width: 100,height: 50,),
+          Image.asset("assets/images/gridx_1.png",width: 100,height: 50,),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0,30,0,0),
-            child: Text(title,style: TextStyle(fontSize: 15)),
+            padding: const EdgeInsets.fromLTRB(0,15,0,0),
+            child: Text(title,style: TextStyle(fontSize: 20)),
           ),
         ]
     ),
@@ -254,14 +253,14 @@ AppBar sldcAppbar(String title,){
     leadingWidth: 40,
    // backgroundColor: Colors.transparent,
     centerTitle: false,
-    titleSpacing: 0,
+    titleSpacing: -15,
     title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
-          Image.asset("assets/images/gridx.png",width: 100,height: 50,),
+          Image.asset("assets/images/gridx_1.png",width: 100,height: 50,),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0,30,0,0),
-            child: Text(title,style: TextStyle(fontSize: 15)),
+            padding: const EdgeInsets.fromLTRB(0,15,0,0),
+            child: Text(title,style: TextStyle(fontSize: 20)),
           ),
         ]
     ),
@@ -277,14 +276,14 @@ AppBar adminAppbar(String title,){
     leadingWidth: 40,
    // backgroundColor: Colors.transparent,
     centerTitle: false,
-    titleSpacing: 0,
+    titleSpacing: -15,
     title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
-          Image.asset("assets/images/gridx.png",width: 100,height: 50,),
+          Image.asset("assets/images/gridx_1.png",width: 100,height: 50,),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0,30,0,0),
-            child: Text(title,style: TextStyle(fontSize: 15)),
+            padding: const EdgeInsets.fromLTRB(0,15,0,0),
+            child: Text(title,style: TextStyle(fontSize: 20)),
           ),
         ]
     ),
@@ -312,8 +311,7 @@ class _AppDrawerState extends State<AppDrawer> {
               bottomRight: Radius.circular(20),
               bottomLeft: Radius.circular(20)),
         ),
-
-       child: new ListView(
+        child: new ListView(
          children: [
            ListTile(
              leading: Icon(Icons.supervised_user_circle_outlined),
@@ -355,7 +353,7 @@ class _AppDrawerState extends State<AppDrawer> {
                            child: Text("Logout"),
                            onPressed:()=>{
                              Get.find<AuthenticatedApiService>().logout()
-                           } ,
+                           }
                             ),
                        ],
                      );
@@ -364,13 +362,7 @@ class _AppDrawerState extends State<AppDrawer> {
                },
            ),
            Divider(height: 3.0,),
-           ExpansionTile(
-             leading: Icon(Icons.wb_incandescent_outlined),
-             title: Text("App Theme's",style: TextStyle(fontSize: 16),),
-             children: [
-                ChangeThemePage()
-              ],
-           ),
+           ChangeThemePage(),
          ],
        ),
       ),

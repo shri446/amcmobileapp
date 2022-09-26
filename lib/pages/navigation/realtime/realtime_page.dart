@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:get/get.dart';
 
-
 class Realtime extends GetView<RealTimeController > {
   @override
   Widget build(BuildContext context) {
@@ -23,46 +22,39 @@ class Realtime extends GetView<RealTimeController > {
       appBar: createAppbar(controller.title,controller.timestamp2.value,Get.find(),),
         body:Builder(
             builder: (BuildContext context) {
-                   return SingleChildScrollView(
-                     child: Column(
-                       children: [
-                         SizedBox(height: 1,),
-                         station(),
-                         SizedBox(height: 1,),
-                         Expanded(
-                           child: Container(
-                             child: ContainedTabBarView(
-                               tabBarProperties: TabBarProperties(
-                                 background: Container(
-                                   color: AppColors.getContainerColor(),
-                                 ),
-                                 labelColor: AppColors.getDynamicTextColor(),
+                   return Column(
+                     children: [
+                       SizedBox(height: 1,),
+                       station(),
+                       SizedBox(height: 1,),
+                       Expanded(
+                         child: Container(
+                           child: ContainedTabBarView(
+                             tabBarProperties: TabBarProperties(
+                               background: Container(
+                                 color: AppColors.getContainerColor(),
                                ),
-                               tabs:[
-                                 Text('AnalogPoint',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
-                                 Text('DigitalPoint',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
-                               ],
-                               views:[
-                                 AnalogPage(),
-                                 DigitalPage(),
-                               ],
-                               initialIndex:0,
-                               onChange:(index)=>controller.onTabSelect(index),
+                               labelColor: AppColors.getDynamicTextColor(),
                              ),
+                             tabs:[
+                               Text('AnalogPoint',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
+                               Text('DigitalPoint',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
+                             ],
+                             views:[
+                               AnalogPage(),
+                               DigitalPage(),
+                             ],
+                             initialIndex:0,
+                             onChange:(index)=>controller.onTabSelect(index),
                            ),
-                         )
-                       ],
-                     ),
+                         ),
+                       )
+                     ],
                    );
             }
         )
-    ));
-
-
-
-
-
-
+    )
+    );
   }
 }
 

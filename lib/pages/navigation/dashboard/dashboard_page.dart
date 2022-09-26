@@ -11,7 +11,6 @@ class DashboardPage extends GetView<DashboardController>{
   @override
   Widget build(BuildContext context) {
     var _scaffoldKey = new GlobalKey<ScaffoldState>();
-
     context.theme;
   return  Scaffold(
     key: _scaffoldKey,

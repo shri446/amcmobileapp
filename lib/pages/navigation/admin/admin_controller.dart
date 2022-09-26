@@ -26,7 +26,7 @@ class AdminController extends GetxController{
   }
 
   List getTabs(){
-    return ['Users','OverView','Apps',];
+    return ['Users','OverView'];
   }
 
 

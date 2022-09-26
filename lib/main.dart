@@ -3,7 +3,7 @@
 
 import 'dart:convert';
 
-import 'package:amcmobile/pages/login/login_page.dart';
+import 'package:amcmobile/pages/login/login.dart';
 import 'package:amcmobile/pages/login/loginpage_binding.dart';
 import 'package:amcmobile/pages/navigation/admin/admin_binding.dart';
 import 'package:amcmobile/pages/navigation/dashboard/dashboard_binding.dart';
@@ -56,15 +56,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: authenticatedApiService.initialRoute,
-      defaultTransition: Transition.leftToRight,
+      defaultTransition: Transition.zoom,
       getPages: [
-
-       // GetPage(name: "/splash", page:()=> SplashPage(),binding: Splash_Binding()),
         GetPage(name: "/rootpage", page:()=> RootPage()),
         GetPage(name: "/loginpage", page:()=> LoginPage(),binding: LoginPageBinding()),
         GetPage(name: "/realtime", page:()=> Realtime(),binding: RealTimeBinding()),
         GetPage(name: "/network", page:()=> Network(),binding: NetworkBinding()),
-        GetPage(name: "/reports", page:()=> Reports(),binding: ReportsBinding()),
         GetPage(name: "/sld", page:()=> Sld(),binding: SldBinding()),
         GetPage(name: "/trends", page:()=> Trends2(),binding: TrendsBinding(),),
         GetPage(name: "/events", page:()=> Events(),binding: EventsBinding()),
@@ -76,7 +73,6 @@ class MyApp extends StatelessWidget {
       themeMode: amcThemeService.getThemeMode(),
     );
   }
-
 }
 
 
