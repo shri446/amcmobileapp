@@ -20,7 +20,8 @@ class DashboardController extends GetxController{
   var stations = [].obs; //
   var daily=[].obs;
   var tabIndex = 0.obs;
-
+  var today=<TimeValueObject>[].obs;
+  var yesterday=<TimeValueObject>[].obs;
 
   late Map<String,IconData> tabs;
   onSelectMenuItem(index) {

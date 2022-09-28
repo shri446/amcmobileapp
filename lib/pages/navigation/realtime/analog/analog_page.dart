@@ -19,7 +19,6 @@ class AnalogPage extends GetView<RealTimeController>{
     context.theme;
     return Obx(()=> Scaffold(
       body:  Container(
-         // child: controller.analogPoints.isEmpty ?  loading():
         child: controller.analogPoints.isEmpty ? loading():
         SmartRefresher(enablePullDown: true,
             onRefresh: controller.getData(),
@@ -27,14 +26,14 @@ class AnalogPage extends GetView<RealTimeController>{
       child:    ListView.builder(
             itemCount: controller.analogPoints.length,
             physics: BouncingScrollPhysics(),
-            itemBuilder: (context, i) => CreateItem(i,controller,),
+            itemBuilder: (context, i) => Analog_Data(i,controller,),
           )
       ),
     )
     ) );
   }
 
-Widget CreateItem(int i,RealTimeController controller,) {
+Widget Analog_Data(int i,RealTimeController controller,) {
   var Date =new DateTime.fromMicrosecondsSinceEpoch(controller.analogPoints[i]["lastUpdated"]["timestamp"]* 1000);
   var num =controller.analogPoints[i]['lastUpdated']['value'];
   var num2 = double.parse(num.toStringAsFixed(2));
@@ -65,11 +64,9 @@ Widget CreateItem(int i,RealTimeController controller,) {
                   children: [
                     Row(
                       children: [
-                       // Text("Name :  " ,),
                         Text( controller.analogPoints[i]["name"],style: TextStyle(fontSize: 13),),
                       ],
                     ),
-
                   ],
                 ),
               ),
@@ -82,8 +79,7 @@ Widget CreateItem(int i,RealTimeController controller,) {
                             decoration: BoxDecoration(color: AppColors.getDynamicTextColor()),
                             children: [
                               Text("   Name : " + controller.analogPoints[i]["name"],
-                                style: TextStyle(color: Colors.white,height: 2,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(color: Colors.white,height: 2, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),

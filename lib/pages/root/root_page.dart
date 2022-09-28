@@ -16,13 +16,13 @@ class RootPage extends GetView{
         appBar: navAppbar(),
         body: SingleChildScrollView(
           child: Container(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(5),
           // height: MediaQuery.of(context).size.height,
           //width: double.infinity,
           child: Column(
           children: [
             SizedBox(
-              height: 190,
+              height: 200,
               // width: 370,
               child: Carousel(
               images: [
@@ -34,13 +34,11 @@ class RootPage extends GetView{
               dotSpacing: 15.0,
               dotColor: Colors.lightGreenAccent,
               indicatorBgPadding: 5.0,
-              dotBgColor: Colors.purple.withOpacity(0.5),
-              borderRadius: true,
+                borderRadius: true,
             )
           ),
-            SizedBox(height:5),
-            createPages(),
-            Admin1()
+            CreatePages(),
+            AdminPages()
           ]
       )
           ),
@@ -49,7 +47,7 @@ class RootPage extends GetView{
 }
 
 
-Widget createPages(){
+Widget CreatePages(){
   return SingleChildScrollView(
     child: Container(
         child:StaggeredGridView.count(
@@ -68,14 +66,13 @@ Widget createPages(){
             Navpages( "Sld","sld","assets/images/network.svg"),
             Navpages( "Events","events","assets/images/events.svg"),
             Navpages( "Dashboard","dashboard","assets/images/dashboard.svg"),
-
           ],
         )
     ),
   );
 }
 
-Widget Admin1(){
+Widget AdminPages(){
   return SingleChildScrollView(
     child: Container(
         child:StaggeredGridView.count(

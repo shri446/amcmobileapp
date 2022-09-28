@@ -17,7 +17,7 @@ class MonthlyChartPage extends GetView<MonthlyChartController>{
   Widget build(BuildContext context) {
     context.theme;
     return Container(
-        height: 300,
+        height: context.isLandscape ? 400 : 320,
         decoration: AppTheme.boxDecorationStyle(),
         child: controller.obx(
               (state) =>Column(

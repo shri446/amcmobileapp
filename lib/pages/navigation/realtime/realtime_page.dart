@@ -37,8 +37,8 @@ class Realtime extends GetView<RealTimeController > {
                                labelColor: AppColors.getDynamicTextColor(),
                              ),
                              tabs:[
-                               Text('AnalogPoint',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
-                               Text('DigitalPoint',style:TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
+                               Text('AnalogPoint',style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                               Text('DigitalPoint',style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
                              ],
                              views:[
                                AnalogPage(),

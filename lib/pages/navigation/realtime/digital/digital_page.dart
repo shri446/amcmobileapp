@@ -18,14 +18,14 @@ class DigitalPage extends GetView<RealTimeController>{
          ListView.builder(
           itemCount: controller.digitalPoints.length,
           physics: BouncingScrollPhysics(),
-          itemBuilder: (context, i,) => CreateItem2(i,controller,),
+          itemBuilder: (context, i,) => Digital_Data(i,controller,),
         ),
       ),
     )
     );
 
   }
-  Widget CreateItem2 (int i,RealTimeController controller,) {
+  Widget Digital_Data (int i,RealTimeController controller,) {
     var lastUpdatedValue=controller.digitalPoints[i]["lastUpdated"]["value"].toString();
     var colorState=controller.digitalPoints[i]["states"][lastUpdatedValue]['color'].toString();
     var statusText=controller.digitalPoints[i]["states"][lastUpdatedValue]["text"].toString();

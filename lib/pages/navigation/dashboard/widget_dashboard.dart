@@ -91,12 +91,12 @@ class station1 extends GetView<DashboardController>{
       child:Container(
         height: 40,
         child:Padding(
-          padding: EdgeInsets.fromLTRB(15, 2, 8,2),
+          padding: EdgeInsets.fromLTRB(0,0,0,0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               DropdownButton<Map>(
-                hint:Text("Select item",style: TextStyle(color: AppColors.getDynamicTextColor()),),
+                hint:Text("Select Station",style: TextStyle(color: AppColors.getDynamicTextColor()),),
                // value: controller.selectedStation.value,
                 items: createDropdownMenuItems(controller),
                 // onChanged:(item){controller.onSelectMenuItem(item!);},
@@ -120,9 +120,63 @@ List<DropdownMenuItem<Map>> createDropdownMenuItems(DashboardController controll
   });
   return list;
 }
-
-
 class GridDemandChartPage extends GetView<DashboardController>{
+  @override
+  Widget build(BuildContext context) {
+  return   Card(
+    elevation: 10,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    margin: const EdgeInsets.fromLTRB(0,0,0,0),
+    child:Container(
+      height: 200,
+      child: SfCartesianChart(
+          title: ChartTitle(text: "Test"),
+          primaryYAxis: NumericAxis(rangePadding: ChartRangePadding.round, interactiveTooltip: InteractiveTooltip(enable: true),),
+          primaryXAxis: DateTimeAxis(
+            dateFormat: DateFormat('HH:mm'),
+            interval: 200,
+            intervalType: DateTimeIntervalType.minutes,
+            // interactiveTooltip: InteractiveTooltip(enable: true,format: 'point.x : point.y'), // Enables the crosshair tooltip
+          ),
+          plotAreaBorderWidth: 0,
+          trackballBehavior: TrackballBehavior(
+              enable: true,
+              shouldAlwaysShow: true,
+              activationMode: ActivationMode.singleTap,
+              // tooltipDisplayMode: TrackballDisplayMode.groupAllPoints,
+              tooltipSettings: InteractiveTooltip(
+                // Formatting trackball tooltip text
+                  format: 'point.x Hrs \n      point.y MW',
+                  decimalPlaces:0
+              )
+          ),
+          //tooltipBehavior: TooltipBehavior(enable: true),
+          legend: Legend(isVisible: true,position: LegendPosition.bottom,toggleSeriesVisibility: true ),
+          series: <ChartSeries>[
+            // Renders line chart
+            LineSeries<TimeValueObject,DateTime>(
+                name: 'Today',
+                dataSource: controller.today.value,
+                xValueMapper: (data,index) => data.timestamp,
+                yValueMapper: (data, index) => data.value,
+                color: Colors.green
+            ),
+            LineSeries<TimeValueObject,DateTime>(
+                name: 'Yesterday',
+                dataSource: controller.yesterday.value,
+                xValueMapper: (data,index) => data.timestamp,
+                yValueMapper: (data, index) => data.value,
+                color: Colors.red
+            )
+          ]
+      ),
+    ),
+  );
+  }
+
+}
+
+/*class GridDemandChartPage extends GetView<DashboardController>{
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +186,7 @@ class GridDemandChartPage extends GetView<DashboardController>{
         children: [
     Container(
 
-    padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
+   padding: const EdgeInsets.fromLTRB(3, 3, 3, 10),
     child: Text("Hourly Generation", style: AppTheme.cardTitleStyle(),),
     ),
       Container(
@@ -142,28 +196,29 @@ class GridDemandChartPage extends GetView<DashboardController>{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                      padding: EdgeInsets.fromLTRB(10,2,10,6),
+                      padding: EdgeInsets.fromLTRB(0,0,0,0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                             /* Text(controller.peakDemand.value['value'].toString(),style: AppTheme.dynamicTextStyle(),),
-                              Text(DateFormat('dd MMMyy,HH:mm').format(DateTime.fromMillisecondsSinceEpoch(controller.peakDemand.value['timestamp'])),style: Get.textTheme.caption)*/
+                             *//* Text(controller.peakDemand.value['value'].toString(),style: AppTheme.dynamicTextStyle(),),
+                              Text(DateFormat('dd MMMyy,HH:mm').format(DateTime.fromMillisecondsSinceEpoch(controller.peakDemand.value['timestamp'])),style: Get.textTheme.caption)*//*
                             ],
                           )
                           // Text("28 Mar,21",style: Get.textTheme.caption,)
                         ],
                       )
                   ),
-                  Divider(height: 2,color: AppColors.getBorderColor()),
+                  Divider(height: 5,color: AppColors.getBorderColor()),
                   Expanded(
                       child: SfCartesianChart(
                           primaryXAxis: CategoryAxis(majorGridLines: const MajorGridLines(width: 0),),
                           primaryYAxis: NumericAxis(isVisible: false,),
                           plotAreaBorderWidth: 0,
                           // palette: AppColors.circular_colors,
+
                           series: <ChartSeries<TimeValueObject, String>>[
                             ColumnSeries<TimeValueObject, String>(
                               dataSource: controller.statistics.value,
@@ -183,14 +238,14 @@ class GridDemandChartPage extends GetView<DashboardController>{
 
   }
 
-}
+}*/
 Widget createSecondRow(DashboardController controller){
   return Container(
       child:StaggeredGridView.count(
         crossAxisCount: 2,
         shrinkWrap: true,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
         padding: EdgeInsets.fromLTRB(0,0,0,0),
         physics: NeverScrollableScrollPhysics(),
         staggeredTiles: [StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1)],
@@ -209,7 +264,7 @@ Widget createGridDemandContainer(DashboardController controller){
       child:Container(
           padding: EdgeInsets.fromLTRB(10,5,10,10),
           height: 120,
-          // margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
+         //  margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
           decoration: AppTheme.boxDecorationStyle(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -242,9 +297,9 @@ Widget createTotalUnitsContainer(DashboardController controller){
   return InkWell(
     //  onTap: ()=>controller.showEnergyChartDialog(),
       child:Container(
-          padding: EdgeInsets.fromLTRB(10,7,10,10),
+          padding: EdgeInsets.fromLTRB(10,10,10,10),
           height: 120,
-          // margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
+           //margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
           decoration: AppTheme.boxDecorationStyle(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -287,7 +342,7 @@ Widget createTodayEnergyContainer(DashboardController controller){
       child:Container(
           padding: EdgeInsets.fromLTRB(10,5,10,10),
           height:120,
-          // margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
+           //margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
           decoration: AppTheme.boxDecorationStyle(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -328,7 +383,7 @@ Widget createPrRatioContainer(DashboardController controller){
       child:Container(
           padding: EdgeInsets.fromLTRB(10,5,10,10),
           height:120,
-          // margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
+           //margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
           decoration: AppTheme.boxDecorationStyle(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -365,7 +420,7 @@ Widget createThirdRow(DashboardController controller){
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10 ,10),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0 ,0),
                 child: Text("Genaration Statistics", style: AppTheme.cardTitleStyle(),),
           ),
         Container(
@@ -374,7 +429,7 @@ Widget createThirdRow(DashboardController controller){
                 shrinkWrap: true,
                 crossAxisSpacing: 5,
                 mainAxisSpacing: 5,
-                padding: EdgeInsets.fromLTRB(3,3,3,3),
+                //padding: EdgeInsets.fromLTRB(3,3,3,3),
                 physics: NeverScrollableScrollPhysics(),
                 staggeredTiles: [StaggeredTile.fit(1),StaggeredTile.fit(1),StaggeredTile.fit(1),],
                 children: [
@@ -393,7 +448,7 @@ Widget createDailyContainer(DashboardController controller){
      onTap: ()=>controller.showDailyChartDialog(),
       child:Container(
           padding: EdgeInsets.fromLTRB(10,5,10,10),
-          height: 80,
+          height: 120,
           // margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
           decoration: AppTheme.boxDecorationStyle(),
           child: Column(
@@ -436,7 +491,7 @@ Widget createMonthlyContainer(DashboardController controller){
      onTap: ()=>controller.showMonthlyChartDialog(),
       child:Container(
           padding: EdgeInsets.fromLTRB(10,5,10,10),
-          height: 80,
+          height: 120,
           // margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
           decoration: AppTheme.boxDecorationStyle(),
           child: Column(
@@ -479,7 +534,7 @@ Widget createYearlyContainer(DashboardController controller){
      onTap: ()=>controller.showYearlyChartDialog(),
       child:Container(
           padding: EdgeInsets.fromLTRB(10,5,10,10),
-          height: 80,
+          height: 120,
           // margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
           decoration: AppTheme.boxDecorationStyle(),
           child: Column(

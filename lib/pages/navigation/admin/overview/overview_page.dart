@@ -20,8 +20,8 @@ class OverviewPage extends GetView{
               SizedBox(height: 7,),
               Expanded(
                     child:InkWell(
-                    child: Image.asset('assets/architecture.JPG',fit: BoxFit.fill,),
-                    onTap: ()=>Get.rootDelegate.toNamed("/navigation/admin/zoomable",arguments: 'assets/architecture.JPG'),
+                    child: Image.asset('assets/images/architecture.JPG',fit: BoxFit.fill,),
+                    onTap: ()=>Get.rootDelegate.toNamed("/navigation/admin/zoomable",arguments: 'assets/images/architecture.JPG'),
                 )
               )
             ],

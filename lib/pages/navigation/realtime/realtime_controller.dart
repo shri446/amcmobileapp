@@ -26,17 +26,13 @@ class RealTimeController extends GetxController {
   void onReady(){
    // apiservice.getOauthToken();
     getAllStations();
-
-
     timerService.setMethod(()=>getData());
-
     print("Realtime Controller is Opening...");
     super.onReady();
   }
 
   @override
   void onClose(){
-
     print("Realtime Controller is Closing...");
     super.onClose();
   }
