@@ -1,5 +1,6 @@
 import 'package:amcmobile/pages/navigation/admin/admin_controller.dart';
 import 'package:amcmobile/pages/navigation/admin/login_history/user.dart';
+import 'package:amcmobile/pages/navigation/admin/mobile/mobile_users_page.dart';
 import 'package:amcmobile/pages/navigation/admin/overview/overview_page.dart';
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
 import 'package:amcmobile/themes/app_colors.dart';
@@ -35,8 +36,9 @@ class Admin extends GetView<AdminController>{
           views: [
             Users(),
             OverviewPage(),
+            MobileUsersPage(),
             //AppsPage(),
-          //  ManageUsers(),
+
           ],
           initialIndex: 0,
           onChange: (index)=>controller.onTabSelect(index),
@@ -46,7 +48,7 @@ class Admin extends GetView<AdminController>{
       child: ListView(
             children:<Widget> [
               Column(
-                children: [
+                children: [mobile
                   Card(
                     elevation: 20.0,
                     shadowColor: Colors.black,

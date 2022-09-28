@@ -28,12 +28,12 @@ class ChangeThemePage extends GetView{
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount:AppColors.themes.length,
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 5,
+                      crossAxisCount: 4,
                       mainAxisSpacing: 20,
                       crossAxisSpacing: 10,
-                      mainAxisExtent: 40,
+                      mainAxisExtent: 50,
                   ),
                   itemBuilder:(context,index){
                     return InkWell(
