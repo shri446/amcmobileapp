@@ -15,10 +15,8 @@ class Trends2 extends GetView<TrendsController>{
     var _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
-
       endDrawer: AppDrawer(),
       appBar:trendsAppbar(controller.title,),
-
       //backgroundColor: Colors.white,
       body:
        Column(
@@ -29,9 +27,9 @@ class Trends2 extends GetView<TrendsController>{
           Expanded(child: tabTrend(),)
     ],
     ),
-
     );
-  }}
+  }
+}
 
 
 
