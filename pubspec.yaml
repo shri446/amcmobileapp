@@ -25,9 +25,9 @@ dependencies:
     sdk: flutter
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  get: ^4.6.5
-  get_storage: ^2.0.3
+  cupertino_icons: 1.0.5
+  get: 4.6.5
+  get_storage: 2.0.3
   syncfusion_flutter_charts:
   syncfusion_flutter_gauges:
   animated_flip_counter:
@@ -40,11 +40,11 @@ dependencies:
   contained_tab_bar_view:
 #  neumorphic_container: "^0.0.1+2"
   tinycolor:
-  change_app_package_name: ^1.0.0
-  syncfusion_flutter_datepicker: ^19.1.55-beta
+  change_app_package_name: 1.1.0
+  syncfusion_flutter_datepicker: 19.4.56
   date_time_picker:
-  carousel_pro: ^1.0.0
-  stomp_dart_client: ^0.4.3
+  carousel_pro: 1.0.0
+  stomp_dart_client: 0.4.4
 #  clay_containers: ^0.3.2
   flutter_map:
   flutter_map_marker_popup:
@@ -52,12 +52,12 @@ dependencies:
   connectivity_plus:
   flutter_offline:
   pull_to_refresh:
-  device_info_plus: ^3.2.1
-  network_info_plus: ^2.1.4+1
-  flutter_staggered_grid_view: ^0.4.1
+  device_info_plus: 3.2.4
+  network_info_plus: 2.1.4+1
+  flutter_staggered_grid_view: 0.4.1
 #  convex_bottom_bar:
 #  flutter_login:
-  flutter_native_splash: ^2.2.10+1
+  flutter_native_splash: 2.2.10+1
 
 
 flutter_native_splash:  #flutter pub run flutter_native_splash:create
