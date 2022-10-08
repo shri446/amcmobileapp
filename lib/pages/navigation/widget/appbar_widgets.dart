@@ -51,7 +51,38 @@ Widget loading() {
       )
   );
 }
+AppBar staticAppbar(){
+  AuthenticatedApiService amcApiService=Get.find<AuthenticatedApiService>();
+  return AppBar(
+    // backgroundColor: Colors.transparent,
+    //centerTitle: false,
+    titleSpacing: 0,
+    title: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children:[
+          Image.asset("assets/images/gridx_1.png",width: 100,height: 50,),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0,30,0,0),
+            // child: Text(title,style: TextStyle(fontSize: 15)),
+          ),
+        ]
 
+    ),
+    actions: [
+      PopupMenuButton<MapEntry>(
+          icon: Icon(Icons.more_vert,color: Colors.white,),
+          tooltip: 'Actions',
+          elevation: 20,
+          onSelected:(entry)=>entry.value.call(),
+          itemBuilder: (context) => amcApiService.menuItems.entries.map((entry) =>
+              PopupMenuItem(
+                value: entry,
+                child: Text(entry.key.toString()),
+              )).toList()
+      ),
+    ],
+  );
+}
 
 AppBar dashboardAppbar(String title){
   return AppBar(

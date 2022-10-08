@@ -30,12 +30,10 @@ class AuthenticatedApiService extends GetxService  {
 
   // String initialRoute = '/navigation';
 
-  /*late Map<String, dynamic> menuItems = {
-    'Profile': () => showProfileInfo(),
-    // 'Change Password': () => _changePassword(),
-    'Switch Theme': () => _changeTheme(),
-    'Logout': () => logout()
-  };*/
+  late Map<String, dynamic> menuItems = {
+    'Login': () => goToLoginPage(),
+
+  };
 
   // late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   late OAuth oauthClient;
@@ -115,7 +113,7 @@ class AuthenticatedApiService extends GetxService  {
   checkNetworkAfterMain() async{
     ConnectivityResult result=await Connectivity().checkConnectivity();
     networkStatus.value=(result == ConnectivityResult.none) ? false : true;
-    initialRoute = '/rootpage';
+    initialRoute = '/loginpage';
 
     if (networkStatus.value) {
       try {
@@ -132,7 +130,7 @@ class AuthenticatedApiService extends GetxService  {
             }
           } else {
             log(e.toString());
-          }
+           }
         }
         return;
       }
@@ -336,8 +334,8 @@ class AuthenticatedApiService extends GetxService  {
       //Get.rootDelegate.popRoute();
       // storage.erase();
       disconnectFromStompServer();
-      initialRoute = '/login';
-      Get.rootDelegate.offNamed("/login");
+      initialRoute = '/loginpage';
+      Get.rootDelegate.offNamed("/loginpage");
       // Get.back(closeOverlays: true,canPop: true);
     }
 

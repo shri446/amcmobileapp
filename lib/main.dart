@@ -26,6 +26,7 @@ import 'package:amcmobile/pages/navigation/trends/trends_binding.dart';
 import 'package:amcmobile/service/amctheme_service.dart';
 import 'package:amcmobile/service/authenticated_api_service.dart';
 import 'package:amcmobile/service/timer_service.dart';
+import 'package:amcmobile/staticpage.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
       initialRoute: authenticatedApiService.initialRoute,
       defaultTransition: Transition.zoom,
       getPages: [
+        GetPage(name: "/staticpage", page:()=> StaticPage()),
         GetPage(name: "/rootpage", page:()=> RootPage()),
         GetPage(name: "/loginpage", page:()=> LoginPage(),binding: LoginPageBinding()),
         GetPage(name: "/realtime", page:()=> Realtime(),binding: RealTimeBinding()),
