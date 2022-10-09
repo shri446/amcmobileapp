@@ -1,5 +1,4 @@
 
-import 'package:amcmobile/service/timer_service.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -7,7 +6,7 @@ import '../../../service/authenticated_api_service.dart';
 
 class EventsController extends GetxController {
  final AuthenticatedApiService apiservice = Get.find<AuthenticatedApiService>();
- final TimerService timerService = Get.find<TimerService>();
+ //final TimerService timerService = Get.find<TimerService>();
  final RefreshController refreshController=RefreshController(initialRefresh: false,);
  final String title = 'Events';
 

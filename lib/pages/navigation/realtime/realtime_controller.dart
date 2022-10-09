@@ -1,6 +1,5 @@
 
 
-import 'package:amcmobile/service/timer_service.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -8,7 +7,7 @@ import '../../../service/authenticated_api_service.dart';
 
 class RealTimeController extends GetxController {
   AuthenticatedApiService apiservice = Get.find();
-  final TimerService timerService = Get.find<TimerService>();
+  //final TimerService timerService = Get.find<TimerService>();
   final RefreshController refreshController=RefreshController(initialRefresh:false);
   final String title = 'RealTime';
 
@@ -26,7 +25,7 @@ class RealTimeController extends GetxController {
   void onReady(){
    // apiservice.getOauthToken();
     getAllStations();
-    timerService.setMethod(()=>getData());
+    //timerService.setMethod(()=>getData());
     print("Realtime Controller is Opening...");
     super.onReady();
   }

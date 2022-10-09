@@ -4,7 +4,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:amcmobile/pages/login/login.dart';
+import 'package:amcmobile/pages/login/login_page.dart';
 import 'package:amcmobile/pages/login/loginpage_binding.dart';
 import 'package:amcmobile/pages/navigation/admin/admin_binding.dart';
 import 'package:amcmobile/pages/navigation/dashboard/dashboard_binding.dart';
@@ -25,7 +25,7 @@ import 'package:amcmobile/pages/navigation/reports/reports_page.dart';
 import 'package:amcmobile/pages/navigation/trends/trends_binding.dart';
 import 'package:amcmobile/service/amctheme_service.dart';
 import 'package:amcmobile/service/authenticated_api_service.dart';
-import 'package:amcmobile/service/timer_service.dart';
+import 'package:amcmobile/service/unauthenticated_api_service.dart';
 import 'package:amcmobile/staticpage.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +41,7 @@ Future<void> main() async{
   );
   GetStorage.init();
   Get.lazyPut(() => AuthenticatedApiService());
-  Get.lazyPut(() => TimerService());
+  Get.lazyPut(() => UnAuthenticatedApiService());
   Get.lazyPut(() => AmcThemeService());
 
   AuthenticatedApiService authenticatedApiService=Get.find<AuthenticatedApiService>();

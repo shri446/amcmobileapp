@@ -1,5 +1,4 @@
 
-import 'package:amcmobile/service/timer_service.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -11,7 +10,7 @@ class NetworkController extends GetxController{
   final AuthenticatedApiService apiService=Get.find<AuthenticatedApiService>();
 
   AuthenticatedApiService apiservice = Get.find();
-  final TimerService timerService = Get.find<TimerService>();
+  //final TimerService timerService = Get.find<TimerService>();
   final RefreshController refreshController=RefreshController(initialRefresh:false);
 
 
@@ -27,7 +26,7 @@ class NetworkController extends GetxController{
   @override
   void onReady() {
     getdata();
-    timerService.setMethod(()=>getdata());
+    //timerService.setMethod(()=>getdata());
     super.onReady();
   }
   @override

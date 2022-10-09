@@ -85,7 +85,11 @@ class UnAuthenticatedApiService extends GetxService {
 
   checkNetworkAfterMain() async{
     ConnectivityResult result=await Connectivity().checkConnectivity();
-    apiService.networkStatus.value=(result == ConnectivityResult.none) ? false : true;
+    if(result==ConnectivityResult.wifi || result==ConnectivityResult.mobile){
+      apiService.networkStatus.value=true;
+    }else if(result==ConnectivityResult.none){
+      apiService.networkStatus.value=false;
+    }
     apiService.initialRoute='/navigation/statistics';
 
     if(apiService.networkStatus.value){
@@ -103,11 +107,21 @@ class UnAuthenticatedApiService extends GetxService {
   }
 
   updateNetworkStatusAndConnect(ConnectivityResult result){
-    apiService.networkStatus.value=(result == ConnectivityResult.none) ? false : true;
+    if(result==ConnectivityResult.wifi || result==ConnectivityResult.mobile){
+      apiService.networkStatus.value=true;
+    }else if(result==ConnectivityResult.none){
+      apiService.networkStatus.value=false;
+    }else{
+      return;
+    }
+
     if (apiService.networkStatus.value) {
-      if(Get.rootDelegate!=null && Get.rootDelegate.currentConfiguration!=null && Get.rootDelegate.currentConfiguration!.currentPage!.name!='/login') {
+      if(Get.currentRoute!='/loginpage'){
         initializeStompClientAndConnect();
       }
+      /*if(Get.rootDelegate!=null && Get.rootDelegate.currentConfiguration!=null && Get.rootDelegate.currentConfiguration!.currentPage!.name!='/login') {
+        initializeStompClientAndConnect();
+      }*/
     }else{
       disconnectFromStompServer();
     }
@@ -175,8 +189,8 @@ class UnAuthenticatedApiService extends GetxService {
   goToLoginPage() async {
     //Get.rootDelegate.popRoute();
     // storage.erase();
-    apiService.initialRoute='/login';
-    Get.rootDelegate.offNamed("/login");
+    apiService.initialRoute='/loginpage';
+    Get.offNamed("/loginpage");
     disconnectFromStompServer();
     // Get.back(closeOverlays: true,canPop: true);
   }

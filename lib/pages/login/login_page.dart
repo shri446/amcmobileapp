@@ -1,6 +1,7 @@
 import 'package:amcmobile/pages/login/login_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'login_widget/background.dart';
 
@@ -70,7 +71,7 @@ Widget createUserLogin(LoginController controller){
         onChanged: (text)=>controller.onChangePassword(text),
       ),
       SizedBox(height:50),
-      Text(controller.errorText.value,style: TextStyle(color: Colors.red.shade800,fontWeight: FontWeight.bold),),
+      Obx(()=>Text(controller.errorText.value,style: TextStyle(color: Colors.red.shade800,fontWeight: FontWeight.bold),),),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

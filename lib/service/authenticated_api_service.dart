@@ -112,7 +112,14 @@ class AuthenticatedApiService extends GetxService  {
 
   checkNetworkAfterMain() async{
     ConnectivityResult result=await Connectivity().checkConnectivity();
-    networkStatus.value=(result == ConnectivityResult.none) ? false : true;
+    if(result==ConnectivityResult.mobile || result==ConnectivityResult.wifi ){
+      networkStatus.value=true;
+    }else if(result == ConnectivityResult.none){
+      networkStatus.value=false;
+    }else{
+      return;
+    }
+
     initialRoute = '/loginpage';
 
     if (networkStatus.value) {
@@ -148,11 +155,21 @@ class AuthenticatedApiService extends GetxService  {
   }
 
   updateNetworkStatusAndConnect(ConnectivityResult result){
-    networkStatus.value=(result == ConnectivityResult.none) ? false : true;
+    if(result==ConnectivityResult.mobile || result==ConnectivityResult.wifi ){
+      networkStatus.value=true;
+    }else if(result == ConnectivityResult.none){
+      networkStatus.value=false;
+    }else{
+      return;
+    }
+    //networkStatus.value=(result == ConnectivityResult.none) ? false : true;
     if (networkStatus.value) {
-      if(Get.rootDelegate!=null && Get.rootDelegate.currentConfiguration!=null && Get.rootDelegate.currentConfiguration!.currentPage!.name!='/login') {
+      if(Get.currentRoute!='/loginpage'){
         refreshAccessToken();
       }
+      /*if(Get.rootDelegate!=null && Get.rootDelegate.currentConfiguration!=null && Get.rootDelegate.currentConfiguration!.currentPage!.name!='/login') {
+        refreshAccessToken();
+      }*/
     }else{
       disconnectFromStompServer();
     }
@@ -311,7 +328,7 @@ class AuthenticatedApiService extends GetxService  {
        Connectivity().checkConnectivity().then((result) {
          if(result==ConnectivityResult.none){
            showSnackBar("Error", "Check Internet connection...");
-         }else {
+         }else if(result==ConnectivityResult.wifi || result==ConnectivityResult.mobile){
            Get.dialog(showLoginProgress(), barrierDismissible: false);
            postRequest("/oauth/stomp_protected/logout", {}).then((response) {
              Get.back();
@@ -326,6 +343,8 @@ class AuthenticatedApiService extends GetxService  {
              Get.back();
              showSnackBar("Error", "Please try again...");
            });
+         }else{
+           return;
          }
        });
     }
@@ -335,7 +354,7 @@ class AuthenticatedApiService extends GetxService  {
       // storage.erase();
       disconnectFromStompServer();
       initialRoute = '/loginpage';
-      Get.rootDelegate.offNamed("/loginpage");
+      Get.offNamed("/loginpage");
       // Get.back(closeOverlays: true,canPop: true);
     }
 

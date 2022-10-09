@@ -10,8 +10,8 @@ import '../navigation/widget/appbar_widgets.dart';
 class LoginController extends GetxController {
   final AuthenticatedApiService authenticatedApiService = Get.find<AuthenticatedApiService>();
 
-  final userName = ''.obs;
-  final password = ''.obs;
+  final userName = 'admin'.obs;
+  final password = 'Prem@636'.obs;
   final errorText = ''.obs;
 
   @override
@@ -45,8 +45,7 @@ class LoginController extends GetxController {
       errorText.value = "Password cannot be empty";
     } else {
       Connectivity().checkConnectivity().then((result) {
-        bool status = (result == ConnectivityResult.none) ? false : true;
-        if (status) {
+        if (result==ConnectivityResult.wifi || result==ConnectivityResult.mobile) {
           var dialog = Get.dialog(showLoginProgress(), barrierDismissible: false);
               authenticatedApiService.storage.erase();
               authenticatedApiService.login(userName.value, password.value).then((token) async {
@@ -78,7 +77,7 @@ class LoginController extends GetxController {
                 print(error);
               }
             });
-          } else {
+          } else if(result==ConnectivityResult.none){
             errorText.value = "Check Internet connection";
           }
       });

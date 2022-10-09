@@ -1,6 +1,5 @@
 
 import 'package:amcmobile/domain/time_value_object.dart';
-import 'package:amcmobile/service/timer_service.dart';
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -9,7 +8,7 @@ import '../../../service/authenticated_api_service.dart';
 
 class TrendsController extends GetxController {
   final String title = 'Trends';
-  final TimerService timerService = Get.find<TimerService>();
+  //final TimerService timerService = Get.find<TimerService>();
   final RefreshController refreshController=RefreshController(initialRefresh:false);
 
 

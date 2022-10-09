@@ -377,7 +377,7 @@ class _AppDrawerState extends State<AppDrawer> {
                          CupertinoDialogAction(
                            isDefaultAction: true,
                            child: Text("Cancel"),
-                           onPressed: ()=>{},
+                           onPressed: ()=>Get.back(),
                          ),
                          CupertinoDialogAction(
                            textStyle: TextStyle(color: Colors.red),
