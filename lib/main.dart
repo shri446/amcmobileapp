@@ -9,6 +9,7 @@ import 'package:amcmobile/pages/login/loginpage_binding.dart';
 import 'package:amcmobile/pages/navigation/admin/admin_binding.dart';
 import 'package:amcmobile/pages/navigation/dashboard/dashboard_binding.dart';
 import 'package:amcmobile/pages/navigation/dashboard/dashboard_page.dart';
+import 'package:amcmobile/pages/navigation/landing/landing_page.dart';
 import 'package:amcmobile/pages/navigation/sld/sld_binding.dart';
 import 'package:amcmobile/pages/navigation/sld/sld_page.dart';
 import 'package:amcmobile/pages/navigation/trends/trends.dart';
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
       initialRoute: authenticatedApiService.initialRoute,
       defaultTransition: Transition.zoom,
       getPages: [
-        GetPage(name: "/staticpage", page:()=> StaticPage()),
+        GetPage(name: "/landingpage", page:()=> LandingPage()),
         GetPage(name: "/rootpage", page:()=> RootPage()),
         GetPage(name: "/loginpage", page:()=> LoginPage(),binding: LoginPageBinding()),
         GetPage(name: "/realtime", page:()=> Realtime(),binding: RealTimeBinding()),

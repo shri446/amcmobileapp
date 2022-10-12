@@ -69,7 +69,16 @@ AppBar staticAppbar(){
 
     ),
     actions: [
-      PopupMenuButton<MapEntry>(
+      TextButton(
+          onPressed: gotoLoginpage,
+          child: Container(
+        padding: EdgeInsets.all(0),
+       // color: AppColors.getThemeColor(),
+        child: Text(
+          "Login",style: TextStyle(color: Colors.black),
+        ),
+      ))
+     /* PopupMenuButton<MapEntry>(
           icon: Icon(Icons.more_vert,color: Colors.white,),
           tooltip: 'Actions',
           elevation: 20,
@@ -79,7 +88,7 @@ AppBar staticAppbar(){
                 value: entry,
                 child: Text(entry.key.toString()),
               )).toList()
-      ),
+      ),*/
     ],
   );
 }
@@ -474,4 +483,7 @@ changePassword() {
     onWillPop: () => Get.delete<ChangePasswordController>(force: true),
     onConfirm: () => Get.find<ChangePasswordController>().changePassword(),
   ).then((value) => Get.delete<ChangePasswordController>(force: true));
+}
+gotoLoginpage(){
+  Get.offNamed("/loginpage");
 }

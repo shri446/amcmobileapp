@@ -58,6 +58,8 @@ dependencies:
 #  convex_bottom_bar:
 #  flutter_login:
   flutter_native_splash: 2.2.10+1
+  buttons_tabbar:
+  bulleted_list:
 
 
 flutter_native_splash:  #flutter pub run flutter_native_splash:create
