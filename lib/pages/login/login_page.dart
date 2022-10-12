@@ -3,17 +3,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import '../navigation/widget/appbar_widgets.dart';
 import 'login_widget/background.dart';
 
 class LoginPage extends GetView<LoginController>{
   @override Widget build(BuildContext context) {
     return  Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        toolbarHeight: 100,
+        backgroundColor: Colors.teal,
+        leading: IconButton(
+            icon:  Icon(Icons.arrow_back,),
+            onPressed: () =>gotoLandingpage(),
+          // onPressed: ()=>sldcApiService.back(),
+        ),
+      ),
       body: Stack(
         children: [
           Background(),
           SingleChildScrollView(
             child:Container(
-              padding: const EdgeInsets.fromLTRB(25,170,25,25),
+              padding: const EdgeInsets.fromLTRB(25,25,25,25),
               child:Card(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
                   color: Colors.white,
@@ -26,7 +37,7 @@ class LoginPage extends GetView<LoginController>{
                             'assets/images/gridxlogo.png',
                             height: 100,
                           ),
-                          SizedBox(height: 30,),
+                          SizedBox(height: 20,),
                           createUserLogin(controller)
                         ],
                       ),

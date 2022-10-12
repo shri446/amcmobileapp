@@ -7,8 +7,7 @@ class DrawClip1 extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
     path.addOval(
-        Rect.fromCircle(center: Offset(size.width, 80.0), radius: 150));
-
+        Rect.fromCircle(center: Offset(size.width , 100.0), radius: 100));
     return path;
   }
 
@@ -17,12 +16,14 @@ class DrawClip1 extends CustomClipper<Path> {
     return true;
   }
 }
+
+
 class DrawClip extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
     path.addOval(
-        Rect.fromCircle(center: Offset(size.width * 0.2, 60.0,), radius: 200));
+        Rect.fromCircle(center: Offset(size.width * 0.0, 530.0,), radius: 400));
     return path;
   }
 
@@ -32,6 +33,22 @@ class DrawClip extends CustomClipper<Path> {
     return true;
   }
 }
+class DrawClip2 extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.addOval(
+        Rect.fromCircle(center: Offset(size.width * 0.1, 600.0,), radius: 180));
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    // TODO: implement shouldReclip
+    return true;
+  }
+}
+
 class CustomLoginShapeClipper6 extends CustomClipper<Path> {
   @override
   getClip(Size size) {

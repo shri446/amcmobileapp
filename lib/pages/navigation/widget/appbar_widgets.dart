@@ -484,6 +484,10 @@ changePassword() {
     onConfirm: () => Get.find<ChangePasswordController>().changePassword(),
   ).then((value) => Get.delete<ChangePasswordController>(force: true));
 }
+
 gotoLoginpage(){
   Get.offNamed("/loginpage");
+}
+gotoLandingpage(){
+  Get.offNamed("/landingpage");
 }
