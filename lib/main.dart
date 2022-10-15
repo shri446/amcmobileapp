@@ -27,7 +27,6 @@ import 'package:amcmobile/pages/navigation/trends/trends_binding.dart';
 import 'package:amcmobile/service/amctheme_service.dart';
 import 'package:amcmobile/service/authenticated_api_service.dart';
 import 'package:amcmobile/service/unauthenticated_api_service.dart';
-import 'package:amcmobile/staticpage.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -61,7 +60,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: authenticatedApiService.initialRoute,
-      defaultTransition: Transition.zoom,
+      defaultTransition: Transition.leftToRight,
       getPages: [
         GetPage(name: "/landingpage", page:()=> LandingPage()),
         GetPage(name: "/rootpage", page:()=> RootPage()),

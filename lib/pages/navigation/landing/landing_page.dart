@@ -2,6 +2,7 @@ import 'package:amcmobile/pages/navigation/landing/about/about_page.dart';
 import 'package:amcmobile/pages/navigation/landing/contacts/contacts_page.dart';
 import 'package:amcmobile/pages/navigation/landing/rtu/rtu_page.dart';
 import 'package:amcmobile/pages/navigation/landing/scada/scada_page.dart';
+import 'package:amcmobile/pages/navigation/landing/services/services_page.dart';
 import 'package:amcmobile/themes/app_colors.dart';
 import 'package:bulleted_list/bulleted_list.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
@@ -19,7 +20,7 @@ class LandingPage extends GetView {
       appBar:staticAppbar(),
       body: SafeArea(
         child: DefaultTabController(
-          length: 4,
+          length: 5,
           child: Column(
             children: <Widget>[
               ButtonsTabBar(
@@ -32,8 +33,9 @@ class LandingPage extends GetView {
                 labelStyle:
                 TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 16),
                 tabs: [
-                  Tab(child: Text("About Us",style: TextStyle(color:Colors.black),),),
-                  Tab(text: "SCADA",),
+                  Tab(child: Text("About",style: TextStyle(color:Colors.black),),),
+                  Tab(text: "Services"),
+                  Tab(text: "Scada"),
                   Tab(text: "RTU"),
                   Tab(text: "Contact"),
                 ],
@@ -41,10 +43,11 @@ class LandingPage extends GetView {
               Expanded(
                 child: TabBarView(
                     children: <Widget>[
-                    Aboutpage(),
-                    ScadaPage(),
-                    RtuPage(),
-                    ContactsPage(),
+                      Aboutpage(),
+                      ServicesPage(),
+                      ScadaPage(),
+                      RtuPage(),
+                      ContactsPage(),
                   ]
                 )
               ),

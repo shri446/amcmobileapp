@@ -51,6 +51,7 @@ Widget loading() {
       )
   );
 }
+
 AppBar staticAppbar(){
   AuthenticatedApiService amcApiService=Get.find<AuthenticatedApiService>();
   return AppBar(

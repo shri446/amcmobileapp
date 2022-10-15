@@ -6,7 +6,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../service/authenticated_api_service.dart';
 
 class RealTimeController extends GetxController {
-  AuthenticatedApiService apiservice = Get.find();
+ final AuthenticatedApiService authenticatedApiService = Get.find<AuthenticatedApiService>();
   //final TimerService timerService = Get.find<TimerService>();
   final RefreshController refreshController=RefreshController(initialRefresh:false);
   final String title = 'RealTime';
@@ -20,6 +20,7 @@ class RealTimeController extends GetxController {
   var lastindex;
   var timestamp2='25-12-2021 11:15:31'.obs;
   var time='25-12-2021 11:15:31'.obs;
+
 
   @override
   void onReady(){
