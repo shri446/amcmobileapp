@@ -14,10 +14,9 @@ class ChangeThemePage extends GetView{
     return Center(
       child: Center(
         child: Container(
-            height: 300,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(top: Radius.circular(0)),
-              border: Border.all(color: AppColors.getDynamicTextColor()),
+            //  border: Border.all(color: AppColors.getDynamicTextColor()),
               color:Colors.white,//AppColors.backgroundColor()
             ),
             child: Column(

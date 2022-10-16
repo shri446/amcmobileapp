@@ -11,7 +11,7 @@ class LoginController extends GetxController {
   final AuthenticatedApiService authenticatedApiService = Get.find<AuthenticatedApiService>();
 
   final userName = 'admin'.obs;
-  final password = 'Prem@636'.obs;
+  final password = 'Admin@123'.obs;
   final errorText = ''.obs;
 
   @override
