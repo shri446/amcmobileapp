@@ -4,6 +4,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
+import '../domain/drawing_group.dart';
+
 typedef OAuthToken OAuthTokenExtractor(Response response);
 typedef Future<bool> OAuthTokenValidator(OAuthToken token);
 
@@ -130,9 +132,11 @@ class OAuthToken {
   final String? refreshToken;
   final DateTime? expiration;
   final String? scope;
+  final List<dynamic>? drawings;
+  final List<String>? stationIds;
   final Map<String,dynamic>? profileInfo;
 
-  OAuthToken({this.accessToken,this.refreshToken,this.expiration,this.scope,this.profileInfo});
+  OAuthToken({this.accessToken,this.refreshToken,this.expiration,this.scope,this.drawings,this.stationIds,this.profileInfo});
   bool get isExpired => DateTime.now().isAfter(expiration!);
 
   OAuthToken.fromMap(Map<String, dynamic> map)
@@ -140,6 +144,8 @@ class OAuthToken {
         refreshToken = map['refresh_token'],
         expiration = DateTime.now().add(Duration(seconds: map['expires_in'] ?? map['expires'])),
         scope = map['scope'],
+        drawings = map['drawings'],
+        stationIds = map['stationIds'],
         profileInfo = map['profileInfo'];
 
   Map<String, dynamic> toMap() => {
@@ -147,6 +153,8 @@ class OAuthToken {
     'refresh_token': refreshToken,
     'expires_in': expiration!.millisecondsSinceEpoch,
     'scope': scope,
+    'drawings': drawings,
+    'stationIds': stationIds,
     'profileInfo': profileInfo
   };
 }

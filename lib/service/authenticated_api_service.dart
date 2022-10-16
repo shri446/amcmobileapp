@@ -120,7 +120,7 @@ class AuthenticatedApiService extends GetxService  {
       return;
     }
 
-    initialRoute = '/landingpage';
+    initialRoute = '/loginpage';
 
     if (networkStatus.value) {
       try {

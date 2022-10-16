@@ -81,7 +81,7 @@ Widget createGeographicContainer(DashboardController controller){
   );
 }*/
 
-class station1 extends GetView<DashboardController>{
+class Station1 extends GetView<DashboardController>{
   @override
   Widget build(BuildContext context) {
     context.theme;
@@ -99,8 +99,8 @@ class station1 extends GetView<DashboardController>{
                 hint:Text("Select Station",style: TextStyle(color: AppColors.getDynamicTextColor()),),
                // value: controller.selectedStation.value,
                 items: createDropdownMenuItems(controller),
-                // onChanged:(item){controller.onSelectMenuItem(item!);},
-                onChanged: (value)=> controller.apiService,
+                onChanged:(item){controller.onSelectMenuItem(item!);},
+                // onChanged: (value)=> controller.apiService,
               ),
             ],
           ),

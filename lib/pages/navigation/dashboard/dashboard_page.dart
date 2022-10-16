@@ -1,4 +1,3 @@
-import 'package:amcmobile/domain/time_value_object.dart';
 import 'package:amcmobile/pages/navigation/dashboard/widget_dashboard.dart';
 import 'package:amcmobile/pages/navigation/widget/appbar_widgets.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
-import 'package:intl/intl.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+
 import 'dashboard_controller.dart';
 
 class DashboardPage extends GetView<DashboardController>{
@@ -26,7 +24,7 @@ class DashboardPage extends GetView<DashboardController>{
 
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-             station1(),
+              Station1(),
               GridDemandChartPage(),
               SizedBox(height: 15,),
               createSecondRow(controller),
